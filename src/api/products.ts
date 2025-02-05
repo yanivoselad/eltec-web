@@ -14,7 +14,8 @@ export const getProducts = async (): Promise<promiseProduct> => {
         console.log('error',e)
         return {
             products: [],
-            companies:[],
+            companies: [],
+            categories: [],
         };
     }
 }

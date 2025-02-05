@@ -59,6 +59,7 @@ export const loadProductsFailure = () => ({
 export type promiseProduct = {
     products: Product[]
     companies: string[]
+    categories: Record<string, any>[]
 }
 
 export type productsFilter = {

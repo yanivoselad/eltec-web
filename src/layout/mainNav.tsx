@@ -9,10 +9,7 @@ function MainNav() {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="/">Home</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/admin">Admin</a>
+                            <h3><a className="nav-link active" aria-current="page" href="/">A.E. Technologies</a></h3>
                         </li>
                     </ul>
                     <form className="d-flex" id="myForm" role="search">

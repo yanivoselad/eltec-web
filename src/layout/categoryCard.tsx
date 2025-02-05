@@ -5,7 +5,7 @@ function CategoryCard( props :{ item: any }) {
             <div className="card">
                 <div className="row g-0">
                     <div className="card-body">
-                        <h6 className="card-title">sdsdsdsdsdsd</h6>
+                        <h6 className="card-title">{item.name}</h6>
                         <p className="card-text"><small className="text-body-secondary">{item.description}</small></p>
                         <p className="card-text amount"><small className="text-body-secondary">In stock: {item.amount}</small></p>
                     </div>

@@ -9,6 +9,7 @@ import { getProducts } from 'api/products';
 interface ProductsState {
     products: Product[]
     companies: string[]
+    categories: Record<string,any>[]
     initialized: boolean
     filter: productsFilter
 }
@@ -23,6 +24,7 @@ export function useProductCollection(): [ProductsState, React.Dispatch<ProductsA
                     ...state,
                     products: action.payload.products,
                     companies: action.payload.companies,
+                    categories: action.payload.categories,
                     initialized: true
                 };
 
@@ -60,6 +62,7 @@ export function useProductCollection(): [ProductsState, React.Dispatch<ProductsA
     const [state, dispatch] = useReducer(productReducer, {
         products: [],
         companies: [],
+        categories:[],
         initialized: false,
         filter: {
             company: null,

@@ -1,26 +1,30 @@
 import { useProducts } from "../products/components";
+import { useParams, Link, BrowserRouter as Router } from 'react-router-dom';
+
+interface RouteParams {
+    companyName: string
+}
 
 function CompaniesNav() {
     const { companies, filter, productsDispatch } = useProducts()
+
+    const { companyName } = useParams<RouteParams>();
     return (
         <nav id="companies" className="navbar navbar-expand-lg bg-body-tertiary companies">
             <div className="container">
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul id="companies-nav" className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className={`nav-link ${!filter?.company ? 'active' : ''}`} aria-current="page">All Companies</a>
+                            <Link to='/' className={`nav-link ${!companyName ? 'active' : ''}`} aria-current="page">All Companies</Link>
                         </li>
                     
                     {companies && companies.map(
                         (company, index) => <li key={index} className="nav-item">
-                            <a 
-                                className={`nav-link ${filter?.company === company ? 'active' : ''}`}
-                                aria-current="page"
-                                    onClick={() => {
-                                        productsDispatch({ type: "selectCompany", payload: company })
-                                    }
-                                }
-                            >{company}</a>
+                            <Link
+                                className={`nav-link ${companyName === company ? 'active' : ''}`}
+                                to={`/company/${company}`}
+
+                            >{company}</Link>
                         </li>
                         )}
                     </ul>
