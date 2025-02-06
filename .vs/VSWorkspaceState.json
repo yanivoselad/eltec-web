@@ -4,8 +4,10 @@
     "\\public",
     "\\src",
     "\\src\\api",
-    "\\src\\products",
+    "\\src\\layout",
+    "\\src\\pages",
     "\\src\\products\\components"
   ],
+  "SelectedNode": "\\public\\index.html",
   "PreviewInSolutionExplorer": false
 }

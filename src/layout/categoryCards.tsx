@@ -1,12 +1,16 @@
 import { useProducts } from "../products/components";
 import CategoryCard from "./categoryCard";
 
-function CategoryCards(item: any) {
-    const { categories } = useProducts()
+interface Props {
+    categories: Record<string,any>[]
+}
+
+function CategoryCards(props: Props) {
+    const { categories } = props
     return (
         <div className="container products">
-            <div id="products" className="row">
-            {categories.map((category, index) => {
+            <div id="products" className="row g-5 justify-content-md-center">
+            {categories.map((category:any, index:number) => {
                 return <CategoryCard key={index} item={category} />
             })}
             </div>

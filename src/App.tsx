@@ -6,17 +6,19 @@ import HomePage from './pages/HomePage';
 import CategoryPage from './pages/CategoryPage';
 import CompanyPage from './pages/CompanyPage';
 import ProductPage from './pages/ProductPage';
+import CompaniesNav from './layout/companiesNav';
 
 function App() {
     return (
     <ProductProvider>
         <div className="App">
             <MainNav />
-            <Router>
+                <Router>                                
                 <Switch>
                     <Route exact path="/" component={HomePage} />
-                    <Route path="/category" component={CategoryPage} />
-                    <Route path="/company/:companyName" component={CompanyPage} />
+                    <Route path="/category/:categoryName" component={CategoryPage} />
+                        <Route exact path="/company/:companyName" component={CompanyPage} />
+                        <Route exact path="/company/:companyName/:categoryName" component={CategoryPage} />
                     <Route path="/product" component={ProductPage} />
                 </Switch>
             </Router>

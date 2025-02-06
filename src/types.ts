@@ -1,9 +1,8 @@
 export interface Product {
     id: string,
-    product_create_time: string,
-    product_description: string,
-    product_name: string,
-    product_price: number
+    category?: string,
+    subcategory?: string,
+    company:string,
 }
 
 export interface CreateProduct {

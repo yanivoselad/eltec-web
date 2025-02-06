@@ -1,5 +1,5 @@
 import { useProducts } from "../products/components";
-import { useParams, Link, BrowserRouter as Router } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 interface RouteParams {
     companyName: string
@@ -7,7 +7,6 @@ interface RouteParams {
 
 function CompaniesNav() {
     const { companies, filter, productsDispatch } = useProducts()
-
     const { companyName } = useParams<RouteParams>();
     return (
         <nav id="companies" className="navbar navbar-expand-lg bg-body-tertiary companies">

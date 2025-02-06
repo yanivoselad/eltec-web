@@ -52,8 +52,20 @@ nav.companies {
             border-right: none
         }
 
+.location-nav{
+    height:8rem;
+    padding:3rem;
+}
+
+    .location-nav .page-title {
+        text-align: right;
+        direction: rtl;
+    }
+
+
 .products {
     padding: 1rem;
+    max-width:1200px;
 }
 
 .results-sum {
@@ -66,6 +78,34 @@ nav.companies {
     border-radius: 10px !important;
 }
 
+.card.category {
+    cursor:pointer;
+    height: 300px;
+    border-radius: 10px !important;
+}
+
+.nav-tabs.categories {
+    direction: rtl;
+    padding: 0;
+}
+
+.nav-tabs.categories .nav-link{
+    color:#000;
+    cursor:pointer;
+}
+
+.nav-tabs.categories .nav-link.active {
+    color: #000;
+    cursor: pointer;
+    font-weight:600;
+}
+
+.tabs-categories {
+    border: 1px solid #dee2e6;
+    border-top: 0;
+    padding: 2rem;
+}
+
 .cardTitle {
     background: #bdad30;
     margin-bottom: 0;
@@ -76,6 +116,11 @@ nav.companies {
     border-top-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
+
+    .cardTitle.category {
+        position: initial;
+        font-size: 0.8em;
+    }
 
 .card-text.amount {
     position: absolute;
@@ -94,5 +139,12 @@ nav.companies {
     border-bottom-left-radius: 10px;
 }
 
-
-/*# sourceMappingURL=main.css.map */
+.card .card-image-bg.category {
+    background-color: #fff;
+    align-items: initial;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
