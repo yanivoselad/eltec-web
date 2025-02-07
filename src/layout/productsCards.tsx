@@ -1,5 +1,5 @@
 import { useProducts } from "../products/components";
-import ProductCard from "./productCard";
+import ProductCardRow from "./productCardRow";
 import { useParams, Link } from 'react-router-dom';
 import { Product } from "../types";
 import _ from 'lodash'
@@ -18,7 +18,7 @@ function ProductsCards(props: Props) {
         <div className="container products">
             <div id="products" className="row">
                 {products.map((product: Product, index) => {
-                   return <ProductCard key={index} item={product} />
+                    return <ProductCardRow key={index} item={product} />
             })}
             </div>
         </div>

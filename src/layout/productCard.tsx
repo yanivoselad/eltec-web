@@ -3,7 +3,7 @@ function ProductCard( props :{ item: any }) {
     let descriptions = item.description || ''
     descriptions = descriptions.split(',')
     return (
-        <div className="col-lg-4 col-md-6 col-sm-12 mb-3">
+        <div className="col-lg-12 col-md-12 col-sm-12 mb-3">
             <div className="card">
                 <div className="row g-0">
                     <div className="col-md-4 card-image-bg">

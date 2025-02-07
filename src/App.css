@@ -1,150 +1,190 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 
 html, body {
-    margin: 0
+margin: 0
 }
 
 .jumbotron {
-    background: #339fb591;
-    padding: 3rem 0;
+background: #339fb591;
+padding: 3rem 0;
 }
 
 #myForm {
-    padding: 1rem 0;
+padding: 1rem 0;
 }
 
 nav.mainnav {
-    background-color: #343a40 !important;
-    color: #fff !important;
-    font-weight: bold;
-    font-size: 1.2rem;
+background-color: #343a40 !important;
+color: #fff !important;
+font-weight: bold;
+font-size: 1.2rem;
 }
 
-    nav.mainnav ul .nav-link {
-        color: #fff !important;
-        font-weight: bold;
-        font-size: 1.8rem;
-    }
+nav.mainnav ul .nav-link {
+    color: #fff !important;
+    font-weight: bold;
+    font-size: 1.8rem;
+}
 
 nav.companies {
-    background-color: #024f5e91 !important;
-    color: #fff !important;
-    font-weight: bold;
-    font-size: 1.2rem;
+background-color: #024f5e91 !important;
+color: #fff !important;
+font-weight: bold;
+font-size: 1.2rem;
 }
 
-    nav.companies ul {
-        margin: auto;
-    }
+nav.companies ul {
+    margin: auto;
+}
 
-    nav.companies .nav-link.active {
-        color: #fff
-    }
+nav.companies .nav-link.active {
+    color: #fff
+}
 
-    nav.companies ul li {
-        border-right: 1px solid #000;
-        cursor: pointer;
-        font-size: .8em;
-        padding: 0 10px;
-    }
+nav.companies ul li {
+    border-right: 1px solid #000;
+    cursor: pointer;
+    font-size: .8em;
+    padding: 0 10px;
+}
 
-        nav.companies ul li:last-child {
-            border-right: none
-        }
+    nav.companies ul li:last-child {
+        border-right: none
+    }
 
 .location-nav{
-    height:8rem;
-    padding:3rem;
+height:8rem;
+padding:3rem;
 }
 
-    .location-nav .page-title {
-        text-align: right;
-        direction: rtl;
-    }
+.location-nav .page-title {
+    text-align: right;
+    direction: rtl;
+}
 
 
 .products {
-    padding: 1rem;
-    max-width:1200px;
+padding: 1rem;
 }
 
 .results-sum {
-    padding: 1rem;
+padding: 1rem;
 }
 
 .card,
 .card .row {
-    min-height: 200px;
-    border-radius: 10px !important;
+min-height: 200px;
+border-radius: 10px !important;
 }
-
-.card.category {
-    cursor:pointer;
-    height: 300px;
-    border-radius: 10px !important;
-}
-
-.nav-tabs.categories {
-    direction: rtl;
-    padding: 0;
-}
-
-.nav-tabs.categories .nav-link{
-    color:#000;
-    cursor:pointer;
-}
-
-.nav-tabs.categories .nav-link.active {
-    color: #000;
-    cursor: pointer;
-    font-weight:600;
-}
-
-.tabs-categories {
-    border: 1px solid #dee2e6;
-    border-top: 0;
-    padding: 2rem;
-}
-
 .cardTitle {
     background: #bdad30;
     margin-bottom: 0;
     color: #fff;
-    padding: 2px 15px;
+    padding: 2px 5px;
     position: absolute;
     top: 0;
     border-top-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
+.card.product-row,
+.card.product-row .row {
+    min-height: initial;
+    border-radius: 10px !important;
+    display: flex;
+    flex-direction: row;
+    padding: .5em;
+    justify-content: space-between;
+}
+.card.product-row > div {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+}
 
-    .cardTitle.category {
-        position: initial;
-        font-size: 0.8em;
+    .card.product-row .card-text.details {
+        display: flex;
+        flex-direction: row-reverse;
+        direction: rtl;
     }
 
+.card.product-row .card-title.details {
+    width:50%;
+}
+    .card.product-row .product-details {
+        width: 60%;
+        text-align: right;
+        justify-content: flex-end;
+    }
+    .card.product-row .cardTitle {
+        background: #bdad30;
+        position: initial;
+        margin-bottom: 0 !important;
+        color: #fff;
+        padding: 2px 5px;
+        border-top-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+.card.product-row .card-title {
+    margin-bottom: 0 !important;
+}
+
+.card.category {
+cursor: pointer;
+border-radius: 10px !important;
+}
+
+.nav-tabs.categories {
+direction: rtl;
+padding: 0;
+}
+
+.nav-tabs.categories .nav-link{
+color:#000;
+cursor:pointer;
+}
+
+.nav-tabs.categories .nav-link.active {
+color: #000;
+cursor: pointer;
+font-weight:600;
+}
+
+.tabs-categories {
+border: 1px solid #dee2e6;
+border-top: 0;
+padding: 2rem;
+}
+
+
+.cardTitle.category {
+position: initial;
+font-size: 0.7em;
+white-space: nowrap;
+}
+
 .card-text.amount {
-    position: absolute;
-    bottom: 0;
+position: absolute;
+bottom: 0;
 }
 
 .card-body {
-    direction: rtl;
+direction: rtl;
 }
 
 .card .card-image-bg {
-    background-color: #9999;
-    display: flex;
-    align-items: center;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+background-color: #9999;
+display: flex;
+align-items: center;
+border-top-left-radius: 10px;
+border-bottom-left-radius: 10px;
 }
 
 .card .card-image-bg.category {
-    background-color: #fff;
-    align-items: initial;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap:5px;
+background-color: #fff;
+align-items: initial;
+border-top-left-radius: 10px;
+border-bottom-left-radius: 10px;
+display: flex;
+flex-direction: column;
+gap:5px;
 }

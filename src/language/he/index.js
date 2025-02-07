@@ -7,8 +7,28 @@ const lang = {
         "titles": {
             "other" : 'פריטים שונים',
             "all": 'כל הפריטים',
-            "milling": "כרסומים וחלקים לכרסומים",
+            "milling": "כרסומים",
             "inserts": "לוחיות",
+            "blades": "להבים",
+            "shanks": "קנים",
+            "adapters": "מתאמים",
+            "reamer": "מקודדים",
+            "rings": "טבעות קירור",
+            "drills": "מקדחים",
+        }
+    },
+    "subcategory": {
+        "titles": {
+            "other": 'שונות',
+            "engraving": 'לוחיות לחריטה',
+            "high_feed_milling": "לוחיות כרסום למהירות גבוהה",
+            "inserts": "לוחיות",
+            "blades": "להבים",
+            "shanks": "קנים",
+            "adapters": "מתאמים",
+            "reamers": "מקודדים",
+            "drills": "מקדחים",
+            "drill_head": "ראש מקדח",
         }
     }
 }

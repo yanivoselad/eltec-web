@@ -9,10 +9,10 @@ function LocationNav(props: Props) {
     const history = useHistory();
     return (
         <div className="location-nav" >
-            {!noBreadcrumbs ?
+            {/*!noBreadcrumbs ?
                 <div className="bread container">Home</div>
                 : <div>&nbsp;</div>
-            }
+            */}
             <div className="page-title  container">
                 <h4>{title}</h4>
             </div>

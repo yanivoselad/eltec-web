@@ -3,11 +3,11 @@
     "",
     "\\public",
     "\\src",
-    "\\src\\api",
-    "\\src\\layout",
+    "\\src\\language",
+    "\\src\\language\\he",
     "\\src\\pages",
     "\\src\\products\\components"
   ],
-  "SelectedNode": "\\public\\index.html",
+  "SelectedNode": "\\.gitignore",
   "PreviewInSolutionExplorer": false
 }

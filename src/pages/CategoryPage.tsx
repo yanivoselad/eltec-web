@@ -36,7 +36,7 @@ function HomePage() {
     return (
         <div className="">
             <CompaniesNav />
-            <LocationNav title={`${_.get(lang.category.titles, categoryName, categoryName)}`} />
+            <LocationNav title={`${_.get(lang.category.titles, categoryName, categoryName)} ~ ${ companyName ? lang.category.nav.company + ' ' + companyName : lang.category.nav.all_companies}`} />
             <div className="page container">
                 <ul className="nav nav-tabs categories">
                     {subcategories.map((sub:string, index:number) =>
@@ -44,7 +44,7 @@ function HomePage() {
                             <a
                                 className={`nav-link ${tab === index ? 'active' : ''}`}
                                 onClick={() => setTab(index)}>
-                                {sub}
+                                {_.get(lang.subcategory.titles, sub, sub)}
                             </a>
                         </li>
                     )}
