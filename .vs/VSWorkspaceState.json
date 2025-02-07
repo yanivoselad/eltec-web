@@ -3,11 +3,10 @@
     "",
     "\\public",
     "\\src",
-    "\\src\\language",
     "\\src\\language\\he",
-    "\\src\\pages",
+    "\\src\\layout",
     "\\src\\products\\components"
   ],
-  "SelectedNode": "\\.gitignore",
+  "SelectedNode": "\\src\\layout\\productsCards.tsx",
   "PreviewInSolutionExplorer": false
 }
