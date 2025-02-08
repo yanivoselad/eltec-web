@@ -3,8 +3,11 @@
     "",
     "\\public",
     "\\src",
-    "\\src\\layout"
+    "\\src\\api",
+    "\\src\\layout",
+    "\\src\\products",
+    "\\src\\products\\components"
   ],
-  "SelectedNode": "\\src\\layout\\productCardRow.tsx",
+  "SelectedNode": "\\src\\api\\products.ts",
   "PreviewInSolutionExplorer": false
 }
