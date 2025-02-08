@@ -3,10 +3,8 @@
     "",
     "\\public",
     "\\src",
-    "\\src\\language\\he",
-    "\\src\\layout",
-    "\\src\\products\\components"
+    "\\src\\layout"
   ],
-  "SelectedNode": "\\src\\layout\\productsCards.tsx",
+  "SelectedNode": "\\src\\layout\\productCardRow.tsx",
   "PreviewInSolutionExplorer": false
 }
