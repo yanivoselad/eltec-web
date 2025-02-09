@@ -3,6 +3,7 @@ import { Product, promiseProduct } from "types"
 export const getProducts = async (): Promise<promiseProduct> => {
     try {
         //dispatch(loadProductsInProgress());
+        //yaniv
         const response = await fetch('/api/products');
 
         const data = await response.json();
