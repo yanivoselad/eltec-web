@@ -3,7 +3,7 @@ import { Product, promiseProduct } from "types"
 export const getProducts = async (): Promise<promiseProduct> => {
     try {
         //dispatch(loadProductsInProgress());
-        const response = await fetch('https://main.d32r2rewlbusrt.amplifyapp.com/api/products');
+        const response = await fetch('http://16.171.13.6/api/products');
 
         const data = await response.json();
         return data;
