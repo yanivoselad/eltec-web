@@ -19,7 +19,19 @@ function HomePage() {
     return (
         <div>
             <CompaniesNav />
-            <LocationNav title={`${lang.category.titles.all} ~ ${lang.category.nav.company} ${companyName}`} />
+            <LocationNav noBreadcrumbs title={[
+                {
+                    title: lang.nav.home,
+                    link: '/',
+                },
+                {
+                    title: companyName,
+                },
+                {
+                    title: lang.category.titles.all,
+                },
+            ]} />
+            {/*<LocationNav title={[lang.category.titles.all,lang.category.nav.company,companyName]} />*/}
             <div className="page">            
                 <CategoryCards categories={cats}/>
             </div>

@@ -1,12 +1,16 @@
 const lang = {
+    "nav": {
+        "home" :"ראשי"
+    },
     "category": {
         "nav": {
             "all_companies": "כל החברות",
-            "company": "חברת"
+            "company": "חברת",
+            "categories":"קטגוריות"
         },
         "titles": {
-            "other" : 'פריטים שונים',
-            "all": 'כל הפריטים',
+            "other" : 'כללי',
+            "all": 'כל הקטגוריות',
             "milling": "כרסומים",
             "inserts": "לוחיות",
             "blades": "להבים",
@@ -19,7 +23,7 @@ const lang = {
     },
     "subcategory": {
         "titles": {
-            "other": 'שונות',
+            "other": 'כללי',
             "engraving": 'לוחיות לחריטה',
             "high_feed_milling": "לוחיות כרסום למהירות גבוהה",
             "inserts": "לוחיות",

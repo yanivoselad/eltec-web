@@ -1,12 +1,15 @@
+import { useHistory } from "react-router-dom";
+
 function ProductCard( props :{ item: any }) {
     const { item } = props
+    const history = useHistory();
     let descriptions = item.description || ''
     descriptions = descriptions.split(',')
     return (
-        <div className="col-lg-12 col-md-12 col-sm-12 mb-3">
-            <div className="card">
+        <div className="container">
+            <div className="card product">
                 <div className="row g-0">
-                    <div className="col-md-4 card-image-bg">
+                    <div className="col-md-4">
                         <h6 className="cardTitle">{item.company}</h6>
                     </div>
                     <div className="col-md-8">

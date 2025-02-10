@@ -22,12 +22,10 @@ function HomePage() {
         products,
         (prd: Product) =>
             (!companyName || prd.company === companyName) &&
-            (prd.category === categoryName
-            || (!prd.category && categoryName === "other"))
+            (prd.category === categoryName)
     ) || []
 
-    const category = _.find(categories, { name: categoryName }) || {}
-    const subcategories = _.get(category, 'subcategories', ['other'])
+    const subcategories = _.keys(_.groupBy(prds, 'subcategory'))
     const prdSub = _.filter(
         prds,
         (prd: Product) => prd.subcategory === subcategories[tab]
@@ -36,7 +34,20 @@ function HomePage() {
     return (
         <div className="">
             <CompaniesNav />
-            <LocationNav title={`${_.get(lang.category.titles, categoryName, categoryName)} ~ ${ companyName ? lang.category.nav.company + ' ' + companyName : lang.category.nav.all_companies}`} />
+            <LocationNav noBreadcrumbs title={[
+                {
+                    title: lang.nav.home,
+                    link: '/',
+                },
+                {
+                    title: companyName ? companyName : lang.category.nav.categories,
+                    link: companyName ? '/company/' + companyName : '/',
+                },
+                {
+                    title: _.get(lang.category.titles, categoryName, categoryName),
+                },
+            ]} />
+            {/*<LocationNav title={[_.get(lang.category.titles, categoryName, categoryName), companyName ? lang.category.nav.company + ' ' + companyName : lang.category.nav.all_companies]} />*/}
             <div className="page container">
                 <ul className="nav nav-tabs categories">
                     {subcategories.map((sub:string, index:number) =>

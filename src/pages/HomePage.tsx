@@ -10,7 +10,15 @@ function HomePage() {
     return (
         <div>
             <CompaniesNav />
-            <LocationNav noBreadcrumbs title={`${lang.category.titles.all} ~ ${lang.category.nav.all_companies} `} />
+            <LocationNav noBreadcrumbs title={[
+                {
+                    title: lang.nav.home,
+                    link : '/',
+                },
+                {
+                    title: lang.category.titles.all,
+                }
+            ]} />
             <div className="page">            
                 <CategoryCards categories={categories}/>
             </div>

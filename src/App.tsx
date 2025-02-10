@@ -12,14 +12,15 @@ function App() {
     return (
     <ProductProvider>
         <div className="App">
-            <MainNav />
-                <Router>                                
+                <Router>
+                    <MainNav />
                 <Switch>
                     <Route exact path="/" component={HomePage} />
-                    <Route path="/category/:categoryName" component={CategoryPage} />
+                        <Route exact path="/category/:categoryName" component={CategoryPage} />
                         <Route exact path="/company/:companyName" component={CompanyPage} />
                         <Route exact path="/company/:companyName/:categoryName" component={CategoryPage} />
-                    <Route path="/product" component={ProductPage} />
+                        <Route exact path="/category/:categoryName/:productId" component={ProductPage} />
+                        <Route exact path="/company/:companyName/:categoryName/:productId" component={ProductPage} />
                 </Switch>
             </Router>
         </div>

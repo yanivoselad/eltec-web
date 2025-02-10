@@ -59,11 +59,29 @@ nav.companies ul li {
     color: #024f5e91;
 }
 
-.location-nav .page-title {
-    text-align: right;
-    direction: rtl;
+    .location-nav .page-title {
+        text-align: right;
+        direction: rtl;
+        gap: 5px;
+        flex-wrap:wrap;
+        font-size:.9em;
+    }
+
+.location-nav .page-title-item {
+    align-items: center;
+    font-size: 1em;
+    font-weight: 600;
+    gap:5px;
 }
 
+.location-nav .page-title-item svg{
+    height:12px;
+    width:12px;
+}
+
+    .location-nav .page-title-item a {
+        color: #024f5e91;
+    }
 
 .products {
 padding: 1rem;
@@ -77,6 +95,8 @@ padding: 1rem;
 .card .row {
     border-radius: 10px !important;
 }
+
+
 @media (min-width: 576px) {
     .card,
     .card .row {
@@ -194,20 +214,37 @@ border-top-left-radius: 10px;
 border-bottom-left-radius: 10px;
 }
 
-    .card .card-image-bg.category {
-        background-color: #fff;
-        align-items: initial;
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
-        border-top-right-radius: 10px;
-        display: flex;
-        gap: 5px;
-    }
+.card .card-image-bg.category {
+    background-color: #fff;
+    align-items: initial;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    gap: 5px;
+    flex-wrap:wrap;
+}
 
 .card.category .card-title {
     color: #495057;    
 }
 
+.search-results-menu {
+    position: absolute;
+    background: #fff;
+    z-index: 100;
+    border: 1px solid #eee;
+    color: #000;
+    font-size: 0.8em;
+    font-weight: 400;
+    width: 100%;
+    top: 60px;
+    padding: 10px;
+}
+
+    .search-results-menu > div {
+        padding: 5px 0;
+    }
 
 @media (max-width: 576px) {
     .card.category .card-title {
@@ -242,5 +279,9 @@ border-bottom-left-radius: 10px;
 
     .card.product-row .card-title.details {
         width: 100%;
+    }
+
+    .card.product {
+        padding-top:15px;
     }
 }

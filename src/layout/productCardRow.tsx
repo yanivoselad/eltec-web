@@ -1,9 +1,13 @@
-function ProductCardRow( props :{ item: any }) {
+import { useHistory, useLocation } from "react-router-dom";
+
+function ProductCardRow(props: { item: any }) {
+    const history = useHistory();
+    const location = useLocation()
     const { item } = props
     let descriptions = item.description || ''
     descriptions = descriptions.replaceAll(',',' | ')
     return (
-        <div className="col-lg-12 col-md-12 col-sm-12 mb-3">
+        <div className="col-lg-12 col-md-12 col-sm-12 mb-3" style={{ cursor: 'pointer' }} onClick={(() => history.push(location.pathname+'/'+item._id))} >
             <div className="card product-row">
                 <div>
                     <h6 className="cardTitle">{item.company}</h6>
