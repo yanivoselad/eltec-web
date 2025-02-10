@@ -4,7 +4,7 @@ export const getProducts = async (): Promise<promiseProduct> => {
     try {
         //dispatch(loadProductsInProgress());
         //yaniv
-        const response = await fetch('https://ec2-16-171-13-6.eu-north-1.compute.amazonaws.com/api/products');
+        const response = await fetch('https://77g5o5zvcx22ry5277rfs2xqhm0ecwbe.lambda-url.eu-north-1.on.aws/');
 
         const data = await response.json();
         return data;
