@@ -3,11 +3,13 @@
     "",
     "\\public",
     "\\src",
-    "\\src\\api",
+    "\\src\\language",
+    "\\src\\language\\he",
     "\\src\\layout",
+    "\\src\\pages",
     "\\src\\products",
     "\\src\\products\\components"
   ],
-  "SelectedNode": "\\src\\api\\products.ts",
+  "SelectedNode": "\\src\\App.tsx",
   "PreviewInSolutionExplorer": false
 }

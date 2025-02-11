@@ -16,9 +16,10 @@ const lang = {
             "blades": "להבים",
             "shanks": "קנים",
             "adapters": "מתאמים",
-            "reamer": "מקודדים",
+            "reamer": "מקדדים",
             "rings": "טבעות קירור",
-            "drills": "מקדחים",
+            "drills": "מקדחים",            
+            "extensiones": "מאריכים",
         }
     },
     "subcategory": {
@@ -30,9 +31,15 @@ const lang = {
             "blades": "להבים",
             "shanks": "קנים",
             "adapters": "מתאמים",
-            "reamers": "מקודדים",
+            "reamers": "מקדדים",
             "drills": "מקדחים",
             "drill_head": "ראש מקדח",
+            "facing_milling_inserts": "לוחיות לכרסום שטוח",
+            "milling_heads": "ראשי כרסומים",
+            "finger_milling": "כרסומי אצבע",
+            "drilling_blades": "להבי קידוח",
+            "short_drills": "מקדח קצר",
+            "long_drills":"מקדח ארוך",
         }
     }
 }
