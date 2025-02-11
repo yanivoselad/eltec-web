@@ -25,7 +25,7 @@ const lang = {
     },
     "subcategory": {
         "titles": {
-            "other": 'כללי',
+            "other": 'אחר',
             "engraving": 'לוחיות לחריטה',
             "high_feed_milling": "לוחיות כרסום למהירות גבוהה",
             "inserts": "לוחיות",

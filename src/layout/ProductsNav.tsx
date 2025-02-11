@@ -60,6 +60,9 @@ function ProductsNav() {
                                                     key={index2 + 100}
                                                     className={`dropdown-item`}
                                                     to={`/category/${category.name}`}
+                                                    onClick={() => {
+                                                        setOpen(!open)
+                                                    }}
 
                                                 >{_.get(lang, 'subcategory.titles.' + subcategory, subcategory)}</Link>
                                         )}
