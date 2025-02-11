@@ -26,7 +26,7 @@ function HomePage() {
             (prd.category === categoryName)
     ) || []
 
-    const subcategories = _.keys(_.groupBy(prds, 'subcategory'))
+    const subcategories = _.reverse(_.keys(_.groupBy(prds, 'subcategory')))
     const prdSub = _.filter(
         prds,
         (prd: Product) => prd.subcategory === subcategories[tab]
@@ -52,7 +52,7 @@ function HomePage() {
             {/*<LocationNav title={[_.get(lang.category.titles, categoryName, categoryName), companyName ? lang.category.nav.company + ' ' + companyName : lang.category.nav.all_companies]} />*/}
             <div className="page container">
                 <ul className="nav nav-tabs categories">
-                    {_.reverse(subcategories).map((sub: string, index: number) =>
+                    {subcategories.map((sub: string, index: number) =>
                         <li className="nav-item">
                             <a
                                 className={`nav-link ${tab === index ? 'active' : ''}`}
@@ -67,6 +67,7 @@ function HomePage() {
                     </div>
                     </div>
             </div>
+
     );
 }
 

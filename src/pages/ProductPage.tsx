@@ -18,7 +18,8 @@ interface RouteParams {
 function HomePage() {
     const { companyName, categoryName, productId } = useParams<RouteParams>();
     const { products } = useProducts()
-    const item = _.find(products, { _id: productId }) as Product | undefined
+    console.log(productId)
+    const item = _.find(products, { uuid: Number(productId) }) as Product | undefined
     return (
         <div className="page">
             <CompaniesNav />
@@ -40,7 +41,7 @@ function HomePage() {
                     title: item?.subcode || item?.code || '',
                 },
             ]} />
-            <ProductCard item={item}/>
+            {item ? <ProductCard item={item} /> : <div style={{ textAlign: 'center' }}>not found</div>}
         </div>
     );
 }

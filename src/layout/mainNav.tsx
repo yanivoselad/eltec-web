@@ -66,11 +66,13 @@ function MainNav() {
                             if (inputRef.current) {
                                 inputRef.current.value = ''; // Set input value to empty
                             }
+                            setSearchTerm('')
                             history.push('/results/' + searchTerm)
                         }
                     }}
                         style={{ position: "relative" }} id="myForm" role="search">
                         <input autoComplete="off" ref={inputRef} onChange={(e) => setSearchTerm(e.target.value)} id="search" className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                        <button className="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
                         {open && <div className="search-results-menu">{
                             results.map((res: Product, index: number) => <div onClick={() => {
                                 //history.push('/company/' + res.company + '/' + res.category + '/' + res._id)

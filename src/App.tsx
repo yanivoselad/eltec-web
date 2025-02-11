@@ -7,12 +7,14 @@ import CategoryPage from './pages/CategoryPage';
 import CompanyPage from './pages/CompanyPage';
 import ProductPage from './pages/ProductPage';
 import ResultsPage from './pages/ResultsPage';
+import ScrollToTop from './layout/ScrollToTop';
 
 function App() {
     return (
     <ProductProvider>
         <div className="App">
                 <Router>
+                    <ScrollToTop />
                     <MainNav />
                 <Switch>
                     <Route exact path="/" component={HomePage} />
