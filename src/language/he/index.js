@@ -1,6 +1,9 @@
 const lang = {
     "nav": {
-        "home" :"ראשי"
+        "home": "ראשי",
+        "results": "תוצאות חיפוש",
+        "found": "נמצאו",
+        "totalresutls" : "תוצאות עבור"
     },
     "category": {
         "nav": {

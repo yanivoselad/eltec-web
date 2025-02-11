@@ -4,6 +4,16 @@ html, body {
 margin: 0
 }
 
+
+.loading {
+    margin: auto;
+    font-weight: 600;
+    height: 100vh;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 100vh;
+}
+
 .jumbotron {
 background: #339fb591;
 padding: 3rem 0;
@@ -281,6 +291,8 @@ border-bottom-left-radius: 10px;
     .search-results-menu > div {
         padding: 5px 0;
     }
+
+
 
 @media (max-width: 576px) {
     .card.category .card-title {

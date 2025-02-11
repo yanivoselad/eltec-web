@@ -17,7 +17,7 @@ export const ProductProvider: React.FC = ({ children }) => {
     const [{ initialized, products, companies, categories, filter }, productsDispatch] = useProductCollection();
     return (
         <ProductContext.Provider value={{ products, companies, categories, productsDispatch, filter }}>
-            {initialized ? children : <div>loading...</div>}
+            {initialized ? children : <div className='loading'>Loading...</div>}
         </ProductContext.Provider>
     )
 }
