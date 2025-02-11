@@ -7,6 +7,7 @@ import CategoryPage from './pages/CategoryPage';
 import CompanyPage from './pages/CompanyPage';
 import ProductPage from './pages/ProductPage';
 import CompaniesNav from './layout/companiesNav';
+import ProductsNav from './layout/ProductsNav';
 
 function App() {
     return (

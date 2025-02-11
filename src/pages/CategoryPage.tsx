@@ -8,6 +8,7 @@ import { Product } from '../types';
 import CompaniesNav from '../layout/companiesNav';
 import LocationNav from '../layout/locationNav';
 import lang from '../language/he/index.js'
+import ProductsNav from '../layout/ProductsNav';
 
 interface RouteParams {
     categoryName: string
@@ -34,6 +35,7 @@ function HomePage() {
     return (
         <div className="">
             <CompaniesNav />
+            <ProductsNav />
             <LocationNav noBreadcrumbs title={[
                 {
                     title: lang.nav.home,

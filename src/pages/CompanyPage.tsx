@@ -7,6 +7,7 @@ import _ from 'lodash';
 import { useParams, Link } from 'react-router-dom';
 import LocationNav from '../layout/locationNav';
 import lang from '../language/he/index.js'
+import ProductsNav from '../layout/ProductsNav';
 
 interface RouteParams {
     companyName: string
@@ -19,6 +20,7 @@ function HomePage() {
     return (
         <div>
             <CompaniesNav />
+            <ProductsNav />
             <LocationNav noBreadcrumbs title={[
                 {
                     title: lang.nav.home,

@@ -7,6 +7,7 @@ import _ from 'lodash';
 import { useProducts } from '../products/components';
 import { Product } from '../types';
 import ProductCard from '../layout/productCard';
+import ProductsNav from '../layout/ProductsNav';
 
 interface RouteParams {
     categoryName: string
@@ -21,6 +22,7 @@ function HomePage() {
     return (
         <div className="page">
             <CompaniesNav />
+            <ProductsNav />
             <LocationNav noBreadcrumbs title={[
                 {
                     title: lang.nav.home,

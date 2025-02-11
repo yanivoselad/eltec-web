@@ -27,15 +27,36 @@ nav.mainnav ul .nav-link {
 }
 
 nav.companies {
-background-color: #024f5e91 !important;
-color: #fff !important;
-font-weight: bold;
-font-size: 1.2rem;
+    background-color: #024f5e91 !important;
+    color: #fff !important;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
-
+nav.products ul,
 nav.companies ul {
     margin: auto;
 }
+
+.rtl{
+    direction:rtl
+}
+
+nav.products .dropdown-item
+{
+   text-align:right;
+}
+
+nav.products .navbar-nav {
+   padding-right:0
+}
+
+.navbar-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+    box-shadow: 0 0 0 1px;
+}
+
+
 
 nav.companies .nav-link.active {
     color: #fff
@@ -160,12 +181,27 @@ padding: 1rem;
 .card.category {
     cursor: pointer;
     border-radius: 10px !important;
+    background: #f8f9fa;
 }
+
+.card.category .card-body {
+    padding:10px
+}
+
+
 
 @media (min-width: 576px) {
     .card.category {
         width: 200px;
     }
+        .card.category .card-title {
+            font-size: 1.2em;
+            position: absolute;
+            top: 85px;
+            right: 0;
+            width: 100%;
+            text-align: center;
+        }
 }
 
 .nav-tabs.categories {
@@ -214,19 +250,19 @@ border-top-left-radius: 10px;
 border-bottom-left-radius: 10px;
 }
 
-.card .card-image-bg.category {
-    background-color: #fff;
-    align-items: initial;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-top-right-radius: 10px;
-    display: flex;
-    gap: 5px;
-    flex-wrap:wrap;
-}
+    .card .card-image-bg.category {
+        background-color: #f8f9fa;
+        align-items: initial;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-top-right-radius: 10px;
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+    }
 
 .card.category .card-title {
-    color: #495057;    
+    color: #495057;   
 }
 
 .search-results-menu {
@@ -250,6 +286,7 @@ border-bottom-left-radius: 10px;
     .card.category .card-title {
         font-size: 1.3em;
         text-align: center;
+        margin: 0;
     }
 
     .location-nav {

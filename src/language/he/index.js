@@ -6,7 +6,8 @@ const lang = {
         "nav": {
             "all_companies": "כל החברות",
             "company": "חברת",
-            "categories":"קטגוריות"
+            "categories": "קטגוריות",
+            "products": "מוצרים"
         },
         "titles": {
             "other" : 'כללי',
