@@ -145,19 +145,15 @@ padding: 1rem;
     border-bottom-right-radius: 10px;
     height: fit-content;
 }
+
 .card.product-row,
 .card.product-row .row {
     min-height: initial;
     border-radius: 10px !important;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     padding: .5em;
     justify-content: space-between;
-}
-.card.product-row > div {
-    display: flex;
-    flex-direction: row;
-    gap: 2em;
 }
 
     .card.product-row .card-text.details {
@@ -168,10 +164,10 @@ padding: 1rem;
     }
 
 .card.product-row .card-title.details {
-    width:50%;
+    /*width:50%*/
 }
     .card.product-row .product-details {
-        width: 60%;
+        /*width: 60%;*/
         text-align: right;
         justify-content: flex-end;
     }
@@ -292,7 +288,21 @@ border-bottom-left-radius: 10px;
         padding: 5px 0;
     }
 
+.card.product-row .bottom-details {
+    align-items: center;
+    font-size: 0.8em;
+    gap: 5px;
+    display:flex;
 
+}
+.card.product-row .cardTitle {
+    font-size: 0.7em;
+    border-top-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: 2px 8px;
+}
 
 @media (max-width: 576px) {
     .card.category .card-title {
@@ -311,26 +321,30 @@ border-bottom-left-radius: 10px;
         padding: 1rem 0;
     }
 
-    .card.product-row > div {
-        flex-direction: column;
-        gap: 1em;
-    }
-    .card.product-row > div {
-        flex-direction: column;
-        gap: 1em;
+    .card.product-row {
+        gap: .5em;
     }
 
     .card.product-row .product-details {
-        width: 60%;
+        /*width: 60%;*/
         justify-content: flex-start;
         flex-direction: column-reverse;
     }
 
-    .card.product-row .card-title.details {
-        width: 100%;
+        .card.product-row .card-text.details {
+            font-size: .8em;
+            width: 100%;
+        }
+
+    .card.product-row .card-title {
+       line-height:1em;
     }
 
+
+
+
+    
     .card.product {
-        padding-top:15px;
+        padding-top: 15px;
     }
 }
