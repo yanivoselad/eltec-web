@@ -35,16 +35,16 @@ function MainNav() {
         
             const delayDebounce = setTimeout(() => {
                 //onSearch(searchTerm);
-                console.log(searchTerm)
-                const res = _.filter(products, (product) => {
-                    const find = _.toLower(product?.subcode || product?.code)
-                    return find.includes(_.toLower(searchTerm))
-                })
-                //setResults(_.slice(res, 0, 10))
-                setResults(res)
-                setTotalResults(res.length)
-                setOpen(res.length > 0 && searchTerm !== '')
-
+                if (searchTerm !== '') {
+                    const res = _.filter(products, (product) => {
+                        const find = _.toLower(product?.subcode || product?.code)
+                        return find.includes(_.toLower(searchTerm))
+                    })
+                    //setResults(_.slice(res, 0, 10))
+                    setResults(res)
+                    setTotalResults(res.length)
+                    setOpen(res.length > 0 && searchTerm !== '')
+                }
             }, 500); // 0.5-second delay
 
             return () => clearTimeout(delayDebounce); // Cleanup timeout on each keystroke
@@ -108,7 +108,7 @@ function MainNav() {
 
                     </form>
                 </div>
-                {open && <div className="search-results-menu" onClick={onOutsideClick}>
+                {open && searchTerm !== '' && <div className="search-results-menu" onClick={onOutsideClick}>
 
                     {
                         results.map((res: Product, index: number) => <div onClick={() => {
