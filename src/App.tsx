@@ -19,6 +19,7 @@ function App() {
                 <Switch>
                     <Route exact path="/" component={HomePage} />
                         <Route exact path="/category/:categoryName" component={CategoryPage} />
+                        <Route exact path="/category/:categoryName/sub/:subName" component={CategoryPage} />
                         <Route exact path="/company/:companyName" component={CompanyPage} />
                         <Route exact path="/company/:companyName/:categoryName" component={CategoryPage} />
                         <Route exact path="/category/:categoryName/:productId" component={ProductPage} />

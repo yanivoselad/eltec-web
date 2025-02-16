@@ -30,14 +30,9 @@ function ProductsNav() {
     }, [onOutsideClick]);
 
     return (
-        <nav id="products-nav" ref={inputRef} className="navbar navbar-expand-lg bg-body-tertiary products">
-            <div className="container">
-               
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupported" aria-controls="navbarSupported" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon" onClick={() => setOpen(!open)}></span>                    
-                </button>
-                <h5 className="d-sm-none">{lang.category.nav.products}</h5>
-                <div className={`collapse navbar-collapse ${open ? 'show' : ''}`} id="navbarSupported">
+        <nav id="products-nav" ref={inputRef} className="navbar navbar-expand-lg bg-body-tertiary products d-none d-sm-flex">
+            <div className="container">              
+                <div className={`navbar-collapse ${open ? 'show' : ''}`} id="navbarProducts">
                     <ul id="companies-nav" className="navbar-nav me-auto mb-2 mb-lg-0 rtl">
                         {categories && categories.map(
                             (category, index) => <li
@@ -59,7 +54,7 @@ function ProductsNav() {
                                                 subcategory !== "other" && <Link
                                                     key={index2 + 100}
                                                     className={`dropdown-item`}
-                                                    to={`/category/${category.name}`}
+                                                    to={`/category/${category.name}/sub/${subcategory}`}
                                                     onClick={() => {
                                                         setOpen(!open)
                                                     }}

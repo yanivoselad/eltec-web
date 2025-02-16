@@ -1,7 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
 html, body {
-margin: 0
+    margin: 0;
+    font-family: "Open Sans", serif;
+    font-optical-sizing: auto;
 }
 
 
@@ -14,13 +16,34 @@ margin: 0
     line-height: 100vh;
 }
 
-.jumbotron {
-background: #339fb591;
-padding: 3rem 0;
+.section-title {
+    color: #024f5e91;
+    padding: 2rem 0;
+    text-align: right;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+.divider{
+    height:1px;
+}
+
+.text{
+    color:#666;
+}
+
+.offcanvas-header {
+    background-color: #024f5e91 !important;
+}
+
+.search-wrap {
+    border: 1px solid #eee;
+    border-left-width: 0;
+    border-right-width: 0;
+    padding: 15px;
 }
 
 #myForm {
-padding: 1rem 0;
+    padding: 1rem 0;
 }
 
 nav.mainnav {
@@ -28,6 +51,18 @@ background-color: #343a40 !important;
 color: #fff !important;
 font-weight: bold;
 font-size: 1.2rem;
+}
+
+nav.mainnav .navbar-nav {
+    flex-direction: row;
+    justify-content: space-between;
+    width:100%;
+}
+
+nav.mainnav ul .nav-item {
+    display: flex;
+    align-items: center;
+    cursor:pointer;
 }
 
 nav.mainnav ul .nav-link {
@@ -112,6 +147,7 @@ nav.companies ul li {
 
     .location-nav .page-title-item a {
         color: #024f5e91;
+        text-decoration: none;
     }
 
 .products {
@@ -272,28 +308,31 @@ border-bottom-left-radius: 10px;
 }
 
 .search-results-menu {
-    position: absolute;
     background: #fff;
     z-index: 100;
-    border: 1px solid #eee;
     color: #000;
-    font-size: 0.8em;
-    font-weight: 400;
     width: 100%;
-    top: 60px;
-    padding: 10px;
+    height: 100vh;
+    overflow: scroll;
+    padding: 8px 16px;
 }
 
-    .search-results-menu > div {
-        padding: 5px 0;
-    }
+.search-results-menu > div {
+    padding: 0;
+}
+
+.search-results-menu .search-card-title {
+    text-align: end;
+    font-size: .8em;
+    color: #024f5e91;
+    font-weight: 600;
+}
 
 .card.product-row .bottom-details {
     align-items: center;
     font-size: 0.8em;
     gap: 5px;
-    display:flex;
-
+    display: flex;
 }
 .card.product-row .cardTitle {
     font-size: 0.7em;
@@ -304,11 +343,62 @@ border-bottom-left-radius: 10px;
     padding: 2px 8px;
 }
 
+
+
 @media (max-width: 576px) {
+    .section-title {
+        padding: 3rem 0 1rem 0;
+        text-align: center;
+        font-size: 1.5em;
+        font-weight: 600;
+    }
+
+    nav.mainnav {
+        background-color: #024f5e91 !important;
+    }
+
+        nav.mainnav .navbar-nav {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        nav.mainnav ul .nav-item {
+            display: flex;
+            align-items: center;
+        }
+
+        nav.mainnav ul .nav-link {
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+    #myForm {
+        padding: 0;
+        align-items: center;
+    }
+
+    #navbarProducts {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-out;
+    }
+
+        #navbarProducts.show {
+            max-height: 100vh;
+        }
+
     .card.category .card-title {
         font-size: 1.3em;
         text-align: center;
         margin: 0;
+        padding: 1em 0;
+    }
+
+    .card.category .card-text.amount {
+        text-align: center;
+        position: inherit;
+        bottom: 0;
+        font-size: .9em;
     }
 
     .location-nav {
@@ -325,26 +415,59 @@ border-bottom-left-radius: 10px;
         gap: .5em;
     }
 
-    .card.product-row .product-details {
-        /*width: 60%;*/
-        justify-content: flex-start;
-        flex-direction: column-reverse;
-    }
+        .card.product-row .product-details {
+            /*width: 60%;*/
+            justify-content: flex-start;
+            flex-direction: column-reverse;
+        }
 
         .card.product-row .card-text.details {
             font-size: .8em;
             width: 100%;
         }
 
-    .card.product-row .card-title {
-       line-height:1em;
-    }
+        .card.product-row .card-title {
+            line-height: 1em;
+        }
 
 
 
 
-    
+
     .card.product {
         padding-top: 15px;
+    }
+
+    .offcanvas .nav-link,
+    .offcanvas .dropdown-item {
+        font-size: .9em
+    }
+
+    .offcanvas .dropdown-menu {
+        border: 0
+    }
+
+        .offcanvas .dropdown-menu .dropdown-item {
+            padding-right: 8px;
+            padding-left: 0;
+            text-align: right;
+        }
+
+    .offcanvas .nav-header-link {
+        text-align: right;
+        font-size: 1em;
+        color: #024f5e91;
+        font-weight: 600;
+        padding-bottom: 8px;
+    }
+    .accordion-body{
+        padding:0
+    }
+    .accordion-button::after {
+        margin-right: auto;
+        margin-left: 0;
+    }
+    .accordion-button:not(.collapsed) {
+        background-color: #fff;
     }
 }

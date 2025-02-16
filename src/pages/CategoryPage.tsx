@@ -3,7 +3,7 @@ import ProductsCards from '../layout/productsCards';
 import { useProducts } from "../products/components";
 import { useParams } from 'react-router-dom';
 import _ from 'lodash'
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Product } from '../types';
 import CompaniesNav from '../layout/companiesNav';
 import LocationNav from '../layout/locationNav';
@@ -13,27 +13,34 @@ import ProductsNav from '../layout/ProductsNav';
 interface RouteParams {
     categoryName: string
     companyName: string
+    subName: string
 }
 
 function HomePage() {
-    const [tab, setTab] = useState(0)
+    const { categoryName, companyName, subName } = useParams<RouteParams>();
     const { categories, products } = useProducts()
-    const { categoryName, companyName } = useParams<RouteParams>();
-    const prds = _.filter(
+    const prds = useMemo(() => _.filter(
         products,
         (prd: Product) =>
             (!companyName || prd.company === companyName) &&
             (prd.category === categoryName)
-    ) || []
+    ), [products, categoryName]) || []
+    const prdSub = _.groupBy(prds, 'subcategory')
 
-    const subcategories = _.reverse(_.keys(_.groupBy(prds, 'subcategory')))
-    const prdSub = _.filter(
-        prds,
-        (prd: Product) => prd.subcategory === subcategories[tab]
-            || (_.isEmpty(prd.subcategory) && subcategories[tab] === "other")
-    ) || []
+    const subcategories = useMemo(() => {
+        return _.reverse(_.keys(_.groupBy(prds, 'subcategory'))) || []
+    }, [prds])
+
+    const [tab, setTab] = useState(-1)
+    console.log(subName, subcategories, _.indexOf(subcategories, subName))
+
+    useEffect(() => {
+        console.log(subcategories, subName)
+        setTab(_.indexOf(subcategories, subName))
+    }, [subName, subcategories])
+    
     return (
-        <div className="">
+        <>{ subcategories && <div className="" >
             <CompaniesNav />
             <ProductsNav />
             <LocationNav noBreadcrumbs title={[
@@ -51,24 +58,51 @@ function HomePage() {
             ]} />
             {/*<LocationNav title={[_.get(lang.category.titles, categoryName, categoryName), companyName ? lang.category.nav.company + ' ' + companyName : lang.category.nav.all_companies]} />*/}
             <div className="page container">
-                <ul className="nav nav-tabs categories">
+                <div className="accordion d-sm-none" id="accordionExample">
+                    {subcategories.map((sub: string, index: number) =>
+                        <div className="accordion-item">
+                            <h2 className="accordion-header rtl">
+                                <button
+                                    onClick={() => {
+                                        setTab(tab === index ? -1 : index)
+                                        window.scrollTo(0, 0);
+                                    }
+                                    }
+                                    className={`accordion-button ${tab === index || subcategories.length === 1 ? '' : 'collapsed'}`}
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne"
+                                    aria-expanded="true"
+                                    aria-controls="collapseOne">
+                                    {subcategories.length === 1 && sub === "other" ? lang.subcategory.titles.all : _.get(lang.subcategory.titles, sub, sub)}
+                                </button>
+                            </h2>
+                            <div id="collapseOne" className={`accordion-collapse collapse ${tab === index || (subcategories.length === 1) ? 'show' : ''}`} data-bs-parent="#accordionExample">
+                                <div className="accordion-body">
+                                    <ProductsCards products={prdSub[sub] || []} />
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+                <ul className="nav nav-tabs categories d-none d-sm-flex">
                     {subcategories.map((sub: string, index: number) =>
                         <li className="nav-item">
                             <a
-                                className={`nav-link ${tab === index ? 'active' : ''}`}
+                                className={`nav-link ${tab === index || tab === -1 && !index ? 'active' : ''}`}
                                 onClick={() => setTab(index)}>
                                 {_.get(lang.subcategory.titles, sub, sub)}
                             </a>
                         </li>
                     )}
                 </ul>
-                <div className="tabs-categories">
-                    <ProductsCards products={prdSub} />
-                    </div>
-                    </div>
+                <div className="tabs-categories d-none d-sm-flex">
+                    <ProductsCards products={prdSub[tab === -1 ? subcategories[0] : subcategories[tab]] || []} />
+                </div>
             </div>
-
-    );
+        </div>
+        }
+    </>);
 }
 
 export default HomePage;

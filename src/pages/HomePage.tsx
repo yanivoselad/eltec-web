@@ -12,7 +12,7 @@ function HomePage() {
         <div>
             <CompaniesNav />
             <ProductsNav />
-            <LocationNav noBreadcrumbs title={[
+            {/*<LocationNav noBreadcrumbs title={[
                 {
                     title: lang.nav.home,
                     link : '/',
@@ -20,8 +20,13 @@ function HomePage() {
                 {
                     title: lang.category.titles.all,
                 }
-            ]} />
-            <div className="page">            
+            ]} />*/}
+            <div className="page">
+                <div className="container">
+                    <div className="section-title">
+                        {lang.category.nav.our_products}
+                    </div>
+                </div>
                 <CategoryCards categories={categories}/>
             </div>
         </div>

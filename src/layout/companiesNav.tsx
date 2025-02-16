@@ -9,7 +9,7 @@ interface RouteParams {
 function CompaniesNav() {
     const { companies, filter, productsDispatch } = useProducts()
     const { companyName } = useParams<RouteParams>();
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(true)
     return (
         <nav id="companies" className="navbar navbar-expand-lg bg-body-tertiary companies d-none d-sm-flex">
             <div className="container">
