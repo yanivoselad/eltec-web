@@ -1,12 +1,14 @@
 const lang = {
     "nav": {
+        "company": 'א.א. טכנולוגיות בע"מ',
         "home": "ראשי",
         "results": "תוצאות חיפוש",
         "found": "נמצאו",
         "totalresutls": "תוצאות",
         "find": "חיפוש מוצרים",
-        "main_menu": "תפריט ראשי",
+        "main_menu": "ראשי",
         "companies": "חברות",
+        "loading":"טוען נתונים"
     },
     "category": {
         "nav": {

@@ -63,16 +63,16 @@ function MainNav() {
 
 
     return (
-        <div ref={inputRef}>
-        <nav className="mainnav navbar navbar-expand-lg bg-body-tertiary">
+        <div className="sticky-top" ref={inputRef}>
+        <nav className="mainnav navbar navbar-expand-lg bg-body-tertiary ">
             <div className="container-fluid">
                 <div className="navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        <ul className="navbar-nav me-auto mb-2 mb-slg-0">
                             <li className="nav-item d-sm-none">
                                 <i className="bi bi-list fs-2" onClick={() => setOpenMenu(!openMenu)}></i>
                             </li>
                             <li className="nav-item">
-                                <div><Link className="nav-link" aria-current="page" to="/">A.E. Technologies Ltd</Link></div>
+                                <div><Link className="nav-link" aria-current="page" to="/">{lang.nav.company}</Link></div>
                             </li>
                             <li className="nav-item">
                                 <i className="bi bi-search" onClick={() => setOpenSearch(!openSearch)}></i>
@@ -84,7 +84,7 @@ function MainNav() {
             <div  className={`offcanvas offcanvas-end ${openSearch ? 'show' : ''}`}>
                 <div className="offcanvas-header">
                     <h5 className="offcanvas-title" id="offcanvasLabel">{lang.nav.find}</h5>
-                    <button type="button" className="btn-close" onClick={() => setOpenSearch(!openSearch)}></button>
+                    <button type="button" className="btn btn-close" onClick={() => setOpenSearch(!openSearch)}></button>
                 </div>
                 <div className="container-fluid search-wrap">
                     <form className="d-flex" onSubmit={(event) => {

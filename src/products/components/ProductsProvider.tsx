@@ -2,6 +2,7 @@ import { useProductCollection } from 'products/useProducts';
 import React, { useContext } from 'react'
 
 import { Product, ProductsAction, productsFilter } from 'types';
+import lang from '../../language/he';
 
 type ProductContextType = {
     filter: productsFilter
@@ -17,7 +18,11 @@ export const ProductProvider: React.FC = ({ children }) => {
     const [{ initialized, products, companies, categories, filter }, productsDispatch] = useProductCollection();
     return (
         <ProductContext.Provider value={{ products, companies, categories, productsDispatch, filter }}>
-            {initialized ? children : <div className='loading'>Loading...</div>}
+            {initialized ? children :
+                <div className='loading'>
+                    <div className="loading-icon"><img src="../../images/loading.png"/></div>
+                    <div>{lang.nav.loading}...</div>
+                </div>}
         </ProductContext.Provider>
     )
 }
