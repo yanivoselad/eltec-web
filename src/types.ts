@@ -6,7 +6,11 @@ export interface Product {
     code?: string,
     subcode?: string,
     description?: string,
-    amount: number
+    amount: number,
+    formatedtitle?: string,
+    izo?: string,
+    grade?: string,
+    uuid:number
 }
 
 export interface CreateProduct {

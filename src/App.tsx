@@ -8,6 +8,7 @@ import CompanyPage from './pages/CompanyPage';
 import ProductPage from './pages/ProductPage';
 import ResultsPage from './pages/ResultsPage';
 import ScrollToTop from './layout/ScrollToTop';
+import Footer from './layout/Footer';
 
 function App() {
     return (
@@ -24,8 +25,8 @@ function App() {
                         <Route exact path="/company/:companyName/:categoryName" component={CategoryPage} />
                         <Route exact path="/category/:categoryName/:productId" component={ProductPage} />
                         <Route exact path="/company/:companyName/:categoryName/:productId" component={ProductPage} />
-                        <Route exact path="/results/:term" component={ResultsPage} />
-                </Switch>
+                        <Route exact path="/results/:term" component={ResultsPage} />                        
+                    </Switch>                    
             </Router>
         </div>
     </ProductProvider>

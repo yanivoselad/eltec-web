@@ -1,32 +1,50 @@
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+import lang from "../language/he";
+import { Product } from "../types";
 
-function ProductCard( props :{ item: any }) {
-    const { item } = props
+interface RouteParams {
+    categoryName: string
+    companyName: string
+    subName: string
+
+}
+function ProductCard(props: { item: Product, nav: Record<string, number | undefined> }) {
+    const { item, nav } = props
     const history = useHistory();
-    let descriptions = item.description || ''
-    descriptions = descriptions.split(',')
+    const { categoryName, companyName, subName } = useParams<RouteParams>();
+    
     return (
-        <div className="container">
-            <div className="card product">
-                <div className="row g-0">
-                    <div className="col-md-4">
-                        <h6 className="cardTitle">{item.company}</h6>
-                    </div>
-                    <div className="col-md-8">
-                        <div className="card-body">
-                            <h6 className="card-title">{item.subcode || item.code}</h6>
-                            <p className="card-text" style={{ textAlign:"right" }}>
-                                {descriptions.map((description: string, index: number) =>
-                                    <div><small key={index} className="text-body-secondary">{description}</small></div>
-                                )}
-                            </p>
-                            <p className="card-text amount"><small className="text-body-secondary">In stock: {item.amount}</small></p>
-                        </div>
-                    </div>
+        <div className="">
+            <div className="card product p-2">
+                <table className="rtl">
+                    <FieldValue name={lang.product.id} value={item.subcode || item.code} />
+                    <FieldValue name={lang.product.company} value={item.company} />
+                    <FieldValue name={lang.product.series} value={item.izo} />
+                    <FieldValue name={lang.product.desciption} value={item.description} />
+                    <FieldValue name={lang.product.grade} value={item.grade} />
+                    <FieldValue name={lang.product.amount} value={item.amount} />
+                </table>
+                <div className="d-flex flex-row pt-3 justify-content-between" >
+                    {nav.next && <div className="px-0 linkable" onClick={() => history.push('/category/' + categoryName + '/' + nav.next)}>
+                        <i className="bi bi-arrow-left ps-1"></i>
+                        <small>{lang.nav.nextizo}</small>
+                    </div>}
+                    {nav.back && <div className="px-0 linkable" onClick={() => history.push('/category/' + categoryName + '/' + nav.back)}>
+                        <small>{lang.nav.backizo}</small>
+                        <i className="bi bi-arrow-right ps-1"></i>
+                    </div>}
                 </div>
             </div>
+            
         </div>
     );
+}
+
+const FieldValue = (props: { name: string, value: any }) => {
+    return <tr>
+        <td className="field-name col-3 d-inline-block">{props.name}:</td>
+        <td className="field-value col-9 d-inline-block">{props.value || '-'}</td>
+    </tr>
 }
 
 export default ProductCard;

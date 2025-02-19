@@ -10,15 +10,17 @@ interface RouteParams {
 
 interface Props {
     products: Product[]
+    type?: string
+    searchMode?: boolean
 }
 
 function ProductsCards(props: Props) {
-    const { products  } = props
+    const { products, type, searchMode = false  } = props
     return (
-        <div className="container products">
+        <div className={`container ${type ? type : 'products'}`}>
             <div id="products" className="row">
                 {products.map((product: Product, index) => {
-                    return <ProductCardRow key={index} item={product} />
+                    return <ProductCardRow searchMode={searchMode} type={type} key={index} item={product} />
             })}
             </div>
         </div>

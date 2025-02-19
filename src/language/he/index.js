@@ -8,7 +8,10 @@ const lang = {
         "find": "חיפוש מוצרים",
         "main_menu": "ראשי",
         "companies": "חברות",
-        "loading":"טוען נתונים"
+        "loading": "טוען נתונים",
+        "back": "חזור",
+        "nextizo": "לפריט הבא בסדרה",
+        "backizo":"לפריט הקודם בסדרה"
     },
     "category": {
         "nav": {
@@ -34,6 +37,9 @@ const lang = {
     },
     "subcategory": {
         "titles": {
+            "serieses": "סדרות",
+            "no_series": "פריטים ללא סדרה",
+            "series":"סדרה",
             "all" :"הכל",
             "other": 'אחר',
             "engraving": 'לוחיות לחריטה',
@@ -60,6 +66,14 @@ const lang = {
             "milling_inserts": "לוחיות כרסום",
             "flat_blade":"להבים שטוחים"
         }
+    },
+    "product": {
+        "id": 'מק"ט',
+        "company":"חברה",
+        "series": "סדרה",
+        "desciption": "תיאור",
+        "amount": "כמות במלאי",
+        "grade": "דרגה",
     }
 }
 

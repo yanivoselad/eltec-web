@@ -9,6 +9,7 @@ import CompaniesNav from '../layout/companiesNav';
 import LocationNav from '../layout/locationNav';
 import lang from '../language/he/index.js'
 import ProductsNav from '../layout/ProductsNav';
+import SeriesCard from '../layout/seriesCard';
 
 interface RouteParams {
     categoryName: string
@@ -32,7 +33,10 @@ function HomePage() {
     }, [prds])
 
     const [tab, setTab] = useState(-1)
-    console.log(subName, subcategories, _.indexOf(subcategories, subName))
+
+    const getIzo = () => {
+        return _.groupBy(prdSub[tab === -1 ? subcategories[0] : subcategories[tab]] || [], 'izo')
+    }
 
     useEffect(() => {
         console.log(subcategories, subName)
@@ -62,8 +66,9 @@ function HomePage() {
                     {_.get(lang.category.titles, categoryName, categoryName)}
                 </div>
                 <div className="accordion d-sm-none" id="accordionExample">
-                    {subcategories.map((sub: string, index: number) =>
-                        <div className="accordion-item">
+                    {subcategories.map((sub: string, index: number) => {
+                        const izo = _.groupBy(prdSub[sub] || [], 'izo')
+                        return (<div className="accordion-item">
                             <h2 className="accordion-header rtl">
                                 <button
                                     onClick={() => {
@@ -80,13 +85,20 @@ function HomePage() {
                                     {subcategories.length === 1 && sub === "other" ? lang.subcategory.titles.all : _.get(lang.subcategory.titles, sub, sub)}
                                 </button>
                             </h2>
-                            <div id="collapseOne" className={`accordion-collapse collapse ${tab === index || (subcategories.length === 1) ? 'show' : ''}`} data-bs-parent="#accordionExample">
-                                <div className="accordion-body">
-                                    <ProductsCards products={prdSub[sub] || []} />
+                            <div id="collapseOne" className={`accordion-collapse collapse-drop-wrap ${tab === index || (subcategories.length === 1) ? 'show' : ''}`} data-bs-parent="#accordionExample">
+                                <div className="accordion-body collapse-drop">
+                                    {/*_.keys(_.omit(izo, '_')).length > 0 && < div className="caption-title color-sub container text-center">{lang.subcategory.titles.serieses}</div>*/}
+                                    {_.keys(izo).map((izoName:string, index2: number) => 
+                                        <div className="container series-item">
+                                            <SeriesCard
+                                                name={izoName === '_' ? lang.subcategory.titles.no_series : izoName}
+                                                list={izo[izoName]} />
+                                        </div>
+                                    )}
                                 </div>
                             </div>
-                        </div>
-                    )}
+                        </div>)
+                    })}
                 </div>
                 <ul className="nav nav-tabs categories d-none d-sm-flex">
                     {subcategories.map((sub: string, index: number) =>
@@ -100,12 +112,24 @@ function HomePage() {
                     )}
                 </ul>
                 <div className="tabs-categories d-none d-sm-flex">
-                    <ProductsCards products={prdSub[tab === -1 ? subcategories[0] : subcategories[tab]] || []} />
+                    <div className="w-50 m-auto">
+                    {
+                        _.keys(getIzo()).map((izoName: string, index2: number) =>
+                            <div className="container series-item">
+                                <SeriesCard
+                                    name={izoName === '_' ? lang.subcategory.titles.no_series : izoName}
+                                    list={getIzo()[izoName]} />
+                            </div>
+                        )                       
+                        }
+                    </div>
                 </div>
             </div>
         </div>
         }
     </>);
 }
+
+
 
 export default HomePage;

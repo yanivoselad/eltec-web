@@ -2,8 +2,8 @@ import _ from "lodash";
 import { useHistory, useLocation } from "react-router-dom";
 import lang from "../language/he";
 
-function ProductCardRow(props: { item: any, searchMode?: boolean }) {
-    const { item, searchMode = false } = props
+function ProductCardRow(props: { item: any, searchMode?: boolean, type?:string }) {
+    const { item, searchMode = false, type = '' } = props
     const history = useHistory()
     const location = useLocation()
     let descriptions = item.description || ''
@@ -14,13 +14,13 @@ function ProductCardRow(props: { item: any, searchMode?: boolean }) {
                 {_.get(lang.category.titles, item.category)} | 
                 {_.get(lang.subcategory.titles, item.subcategory)}
             </div>}
-            <div className="card product-row">
+            <div className={`card product-row ${type}`}>
 
                 <div className="product-details" onClick={(() => {
                     history.push('/category/' + item.category + '/' + item.uuid)
                 })} >
 
-                    <h6 className="card-title details">{item.subcode || item.code}</h6>
+                    <h6 className="card-title details">{item.formatedtitle || item.subcode || item.code}</h6>
                     <div className="card-text details" style={{ textAlign: "right" }}>
                         {descriptions}
                             {/*descriptions.map((description: string, index: number) =>
@@ -30,7 +30,7 @@ function ProductCardRow(props: { item: any, searchMode?: boolean }) {
                 </div>
                 <div className='flex-row bottom-details'>
                     <h6 className="cardTitle">{item.company}</h6>
-                    {!searchMode && <div className="card-text">In stock: {item.amount}</div>}
+                    {/* <div className="card-text">In stock: {item.amount}</div>*/}
                 </div>
             </div>
         </div>
