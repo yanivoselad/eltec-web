@@ -20,7 +20,7 @@ export const ProductProvider: React.FC = ({ children }) => {
         <ProductContext.Provider value={{ products, companies, categories, productsDispatch, filter }}>
             {initialized ? children :
                 <div className='loading'>
-                    <div className="loading-icon"><img src="../../images/loading.png"/></div>
+                    <div className="loading-icon"><img src="/images/loading.png"/></div>
                     <div>{lang.nav.loading}...</div>
                 </div>}
         </ProductContext.Provider>
