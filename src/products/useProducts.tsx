@@ -74,7 +74,6 @@ export function useProductCollection(): [ProductsState, React.Dispatch<ProductsA
         // TODO: Call fetch action
         let products = getProducts();
         products.then((data) => {
-            console.log(data)
             if (typeof data !== undefined)
                 dispatch({ type: 'load_success', payload: data })
         })

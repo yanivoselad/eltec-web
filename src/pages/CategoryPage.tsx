@@ -39,7 +39,6 @@ function HomePage() {
     }
 
     useEffect(() => {
-        console.log(subcategories, subName)
         setTab(_.indexOf(subcategories, subName))
     }, [subName, subcategories])
     
@@ -88,10 +87,10 @@ function HomePage() {
                             <div id="collapseOne" className={`accordion-collapse collapse-drop-wrap ${tab === index || (subcategories.length === 1) ? 'show' : ''}`} data-bs-parent="#accordionExample">
                                 <div className="accordion-body collapse-drop">
                                     {/*_.keys(_.omit(izo, '_')).length > 0 && < div className="caption-title color-sub container text-center">{lang.subcategory.titles.serieses}</div>*/}
-                                    {_.keys(izo).map((izoName:string, index2: number) => 
-                                        <div className="container series-item">
+                                    {_.sortBy(_.keys(izo)).map((izoName: string, index2: number) =>
+                                        <div className="container series-item" key={index2}>
                                             <SeriesCard
-                                                name={izoName === '_' ? lang.subcategory.titles.no_series : izoName}
+                                                name={izoName}
                                                 list={izo[izoName]} />
                                         </div>
                                     )}
@@ -113,11 +112,12 @@ function HomePage() {
                 </ul>
                 <div className="tabs-categories d-none d-sm-flex">
                     <div className="w-50 m-auto">
-                    {
-                        _.keys(getIzo()).map((izoName: string, index2: number) =>
+                        {
+                            _.sortBy(_.keys(getIzo())).map((izoName: string, index2: number) =>
                             <div className="container series-item">
                                 <SeriesCard
-                                    name={izoName === '_' ? lang.subcategory.titles.no_series : izoName}
+                                    //name={izoName === '_' ? lang.subcategory.titles.no_series : izoName}
+                                        name={izoName}
                                     list={getIzo()[izoName]} />
                             </div>
                         )                       

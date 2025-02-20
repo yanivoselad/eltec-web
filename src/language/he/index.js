@@ -9,7 +9,7 @@ const lang = {
         "main_menu": "ראשי",
         "companies": "חברות",
         "loading": "טוען נתונים",
-        "back": "חזור",
+        "back": "לעמוד קודם",
         "nextizo": "לפריט הבא בסדרה",
         "backizo":"לפריט הקודם בסדרה"
     },
@@ -37,6 +37,7 @@ const lang = {
     },
     "subcategory": {
         "titles": {
+            "rings": "טבעות קירור",
             "serieses": "סדרות",
             "no_series": "פריטים ללא סדרה",
             "series":"סדרה",

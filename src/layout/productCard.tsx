@@ -1,3 +1,4 @@
+import _ from "lodash";
 import { useHistory, useParams } from "react-router-dom";
 import lang from "../language/he";
 import { Product } from "../types";
@@ -17,10 +18,10 @@ function ProductCard(props: { item: Product, nav: Record<string, number | undefi
         <div className="">
             <div className="card product p-2">
                 <table className="rtl">
+                    <FieldValue name={lang.product.desciption || _.get(lang.subcategory, item.subcategory || '')} value={item.description} />
                     <FieldValue name={lang.product.id} value={item.subcode || item.code} />
                     <FieldValue name={lang.product.company} value={item.company} />
-                    <FieldValue name={lang.product.series} value={item.izo} />
-                    <FieldValue name={lang.product.desciption} value={item.description} />
+                    <FieldValue name={lang.product.series} value={item.izo} />                    
                     <FieldValue name={lang.product.grade} value={item.grade} />
                     <FieldValue name={lang.product.amount} value={item.amount} />
                 </table>

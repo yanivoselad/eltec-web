@@ -17,15 +17,16 @@ function SeriesCard(props: { name:string,list: any[] }) {
     return (
         <div className="card series">
             <div className="g-0 d-flex flex-column justify-content-between">
-                <h6 className={`card-title details linkable ${open ? 'show' : ''}`} onClick={() => setOpen(!open)}>
-                    <span className="color-main">{name}</span>
-                </h6>
-                <div className={`collapse-drop-wrap ${open ? 'show' : ''}`}>
+                {<h6 className={`card-title details linkable ${open ? 'show' : ''}`} onClick={() => setOpen(!open)}>
+                    <span className="color-main">{name === '_' ? lang.subcategory.titles.no_series : name}</span>
+                </h6>}
+                <div className={`collapse-drop-wrap ${open || name === '_' ? 'show' : ''}`}>
                     <div className={`series-list collapse-drop`}>
                         {list.map((item, index) => {
                             return (
-                                <div className="d-flex flex-row series-product linkable" onClick={() => history.push('/category/' + item.category + '/' + item.uuid)}>
+                                <div key={index} className="d-flex flex-row series-product linkable gap-1" onClick={() => history.push('/category/' + item.category + '/' + item.uuid)}>
                                     <div className=''>{item.formatedtitle || item.subcode || item.code}</div>
+                                    {item.grade && <div className="pill">{item.grade}</div>}
                                     <i className="bi bi-arrow-right"></i>
                                 </div>
                             )
