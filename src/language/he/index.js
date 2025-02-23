@@ -10,8 +10,9 @@ const lang = {
         "companies": "חברות",
         "loading": "טוען נתונים",
         "back": "לעמוד קודם",
-        "nextizo": "לפריט הבא בסדרה",
-        "backizo":"לפריט הקודם בסדרה"
+        "nextizo": "לפריט הבא",
+        "backizo": "לפריט הקודם",
+        "all_rights": 'כל הזכויות שמורות ל-א.א. טכנולוגיות בע"מ'
     },
     "category": {
         "nav": {
@@ -39,7 +40,7 @@ const lang = {
         "titles": {
             "rings": "טבעות קירור",
             "serieses": "סדרות",
-            "no_series": "פריטים ללא סדרה",
+            "no_series": "פריטים שונים",
             "series":"סדרה",
             "all" :"הכל",
             "other": 'אחר',

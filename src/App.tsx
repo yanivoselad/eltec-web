@@ -26,9 +26,10 @@ function App() {
                         <Route exact path="/category/:categoryName/:productId" component={ProductPage} />
                         <Route exact path="/company/:companyName/:categoryName/:productId" component={ProductPage} />
                         <Route exact path="/results/:term" component={ResultsPage} />                        
-                    </Switch>                    
+                    </Switch>
             </Router>
-        </div>
+            </div>
+            <Footer/>
     </ProductProvider>
   );
 }

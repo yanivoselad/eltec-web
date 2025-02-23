@@ -12,7 +12,7 @@ interface RouteParams {
 function ProductCard(props: { item: Product, nav: Record<string, number | undefined> }) {
     const { item, nav } = props
     const history = useHistory();
-    const { categoryName, companyName, subName } = useParams<RouteParams>();
+    const { categoryName } = useParams<RouteParams>();
     
     return (
         <div className="">
@@ -26,14 +26,14 @@ function ProductCard(props: { item: Product, nav: Record<string, number | undefi
                     <FieldValue name={lang.product.amount} value={item.amount} />
                 </table>
                 <div className="d-flex flex-row pt-3 justify-content-between" >
-                    {nav.next && <div className="px-0 linkable" onClick={() => history.push('/category/' + categoryName + '/' + nav.next)}>
+                    {nav.next ? <div className="px-0 linkable" onClick={() => history.push('/category/' + categoryName + '/' + nav.next)}>
                         <i className="bi bi-arrow-left ps-1"></i>
                         <small>{lang.nav.nextizo}</small>
-                    </div>}
-                    {nav.back && <div className="px-0 linkable" onClick={() => history.push('/category/' + categoryName + '/' + nav.back)}>
+                    </div> : <div>&nbsp;</div>}
+                    {nav.back ? <div className="px-0 linkable" onClick={() => history.push('/category/' + categoryName + '/' + nav.back)}>
                         <small>{lang.nav.backizo}</small>
                         <i className="bi bi-arrow-right ps-1"></i>
-                    </div>}
+                    </div> : <div>&nbsp;</div>}
                 </div>
             </div>
             

@@ -1,10 +1,9 @@
 
 import CompaniesNav from '../layout/companiesNav';
 import CategoryCards from '../layout/categoryCards';
-import ProductsCards from '../layout/productsCards';
 import { useProducts } from '../products/components';
 import _ from 'lodash';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import LocationNav from '../layout/locationNav';
 import lang from '../language/he/index.js'
 import ProductsNav from '../layout/ProductsNav';

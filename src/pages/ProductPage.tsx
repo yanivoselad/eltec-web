@@ -2,14 +2,14 @@
 import CompaniesNav from '../layout/companiesNav';
 import LocationNav from '../layout/locationNav';
 import lang from '../language/he/index.js'
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import _ from 'lodash';
 import { useProducts } from '../products/components';
 import { Product } from '../types';
 import ProductCard from '../layout/productCard';
 import ProductsNav from '../layout/ProductsNav';
 import { useMemo } from 'react';
-import Footer from '../layout/Footer';
+import GoBack from '../layout/GoBack';
 
 interface RouteParams {
     categoryName: string
@@ -68,7 +68,7 @@ function HomePage() {
                     {item?.formatedtitle || item?.code || item?.subcode}
                 </div>
                 {item ? <ProductCard item={item} nav={navItem} /> : <div style={{ textAlign: 'center' }}>not found</div>}
-                <Footer link={linksubcategory}/>
+                <GoBack link={linksubcategory}/>
         </div></>
     );
 }

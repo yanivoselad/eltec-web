@@ -68,8 +68,8 @@ function MainNav() {
             <div className="container-fluid">
                 <div className="navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-slg-0">
-                            <li className="nav-item d-sm-none">
-                                <i className="bi bi-list fs-2" onClick={() => setOpenMenu(!openMenu)}></i>
+                            <li className="nav-item">
+                                <i className="bi bi-list fs-2  d-sm-none" onClick={() => setOpenMenu(!openMenu)}></i>
                             </li>
                             <li className="nav-item">
                                 <div><Link className="nav-link" aria-current="page" to="/">{lang.nav.company}</Link></div>
