@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import LocationNav from '../layout/locationNav';
 import lang from '../language/he/index.js'
 import ProductsNav from '../layout/ProductsNav';
+import Sales from '../layout/Sales';
 
 interface RouteParams {
     companyName: string
@@ -20,6 +21,7 @@ function HomePage() {
         <div>
             <CompaniesNav />
             <ProductsNav />
+            <Sales />
             <LocationNav noBreadcrumbs title={[
                 {
                     title: lang.nav.home,

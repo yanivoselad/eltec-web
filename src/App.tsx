@@ -33,7 +33,7 @@ function App() {
                     <Route exact path="/results/:term" component={ResultsPage} />
                     <Route exact path="/sales" component={SalesPage} />
                 </Switch>
-                    <Sales/>
+                    
             </Router>
             </div>
             

@@ -5,7 +5,12 @@ import lang from '../language/he/index.js'
 import ProductsNav from '../layout/ProductsNav';
 import { useState } from 'react';
 import _ from 'lodash';
-import { lambadaURL, recaptchaKEY } from '../consts';
+import { initialContactValues, lambadaURL, recaptchaKEY } from '../consts';
+import Loading from '../layout/loading';
+import SuccessMessage from '../layout/successMessage';
+import { useHistory } from 'react-router-dom';
+import Sales from '../layout/Sales';
+import LocationNav from '../layout/locationNav';
 
 declare global {
     interface Window {
@@ -17,23 +22,14 @@ declare global {
 }
 
 function SalesPage() {
-    const { categories } = useProducts()
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^0\d{9}$/;
+    const [sending, setSending] = useState<boolean>(false)
+    const [sent, setSent] = useState<boolean>(false)
+    const history = useHistory()
 
-    const [values, setValues] = useState<Record<string, string>>({
-        name: '',
-        email: '',
-        phone: '',
-        message:''
-    })
-
-    const [valids, setValids] = useState<Record<string, string>>({
-        name: '',
-        email: '',
-        phone: '',
-        message: ''
-    })
+    const [values, setValues] = useState<Record<string, string>>(initialContactValues)
+    const [valids, setValids] = useState<Record<string, string>>(initialContactValues)
 
     const updateValues = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setValues({
@@ -63,79 +59,96 @@ function SalesPage() {
         <div>
             <CompaniesNav />
             <ProductsNav />
+            <Sales />
+            <LocationNav noBreadcrumbs title={[]}/>
             <div className="page">
-                <div className="container">
+                {sending || sent ? (sent ?
+                    <SuccessMessage
+                        show={true}
+                        handleMain={() => history.push('/')}
+                        handleAnother={() => setSent(false)}
+                    /> : <Loading style="locale" title={lang.nav.sending} />) :
+                    <><div className="container">
                     <div className="section-title rtl text-center">
                         {lang.sales.title}
                     </div>
-                </div>
-                <form className='container sales-form rtl' onSubmit={(e) => {
-                    e.preventDefault();
-                    let vObj:Record<string, string> = {}
-                    _.keys(values).forEach((name) => {
-                        vObj[name] = validate(name,values[name])
-                    })
-                    setValids(vObj)
-                    console.log(!_.values(vObj).includes('is-invalid'))
-                    if (!_.values(vObj).includes('is-invalid') && window?.grecaptcha) {
-                        try {
-                            window.grecaptcha.ready(() => {
-                                if (window.grecaptcha) { // Ensure grecaptcha is still defined before calling execute
-                                    window.grecaptcha
-                                        .execute(recaptchaKEY, { action: 'contact' })
-                                        .then(async (token: string) => {
-                                            const response = await fetch(lambadaURL, {
-                                                method:"POST",
-                                                headers: {                                                    
-                                                    'Content-Type': 'application/json',
-                                                    'Authorization':token
-                                                },
-                                                body: JSON.stringify(values)
-                                            });                                         
-                                            const data = await response.json();                              
-                                            console.log(data)   
-                                        })
-                                        .catch((error) => {
-                                            console.error('Error executing reCAPTCHA:', error);
-                                        });
-                                }
-                            });
-                        } catch (e) {
-                            console.error('reCAPTCHA error:', e);
-                        }
-                    }
+                    </div>
+                    <form className='container sales-form rtl' onSubmit={(e) => {
+                        e.preventDefault();
+                        let vObj: Record<string, string> = {}
+                        _.keys(values).forEach((name) => {
+                            vObj[name] = validate(name, values[name])
+                        })
+                        setValids(vObj)
+                        if (!_.values(vObj).includes('is-invalid') && window?.grecaptcha) {
+                            try {
+                                window.grecaptcha.ready(() => {
+                                    if (window.grecaptcha) { // Ensure grecaptcha is still defined before calling execute
+                                        setSending(true)
+                                        window.grecaptcha
+                                            .execute(recaptchaKEY, { action: 'contact' })
+                                            .then(async (token: string) => {
 
-                }}>
-                    <div className="mb-3">
-                        <label htmlFor="name" className="form-label">{lang.sales.fields.name}*</label>
-                        <input type="text" className={`form-control ${valids.name}`} name="name" id="name" onChange={updateValues} value={values.name} />
-                        <div className="invalid-feedback">
-                            {lang.sales.validation.required}
+                                                await fetch(lambadaURL, {
+                                                    method: "POST",
+                                                    headers: {
+                                                        'Content-Type': 'application/json',
+                                                        'Authorization': token
+                                                    },
+                                                    body: JSON.stringify(values)
+                                                }).then((res: any) => {
+                                                    window && window.scrollTo(0, 0);
+                                                    setSending(false)
+                                                    setSent(true)
+                                                    setValues(initialContactValues)
+                                                    setValids(initialContactValues)
+                                                }).catch((error) => {
+                                                    setSending(false)
+                                                });
+
+                                            })
+                                            .catch((error) => {
+                                                setSending(false)
+                                                console.error('Error executing reCAPTCHA:', error);
+                                            });
+                                    }
+                                });
+                            } catch (e) {
+                                console.error('reCAPTCHA error:', e);
+                            }
+                        }
+
+                    }}>
+                        <div className="mb-3">
+                            <label htmlFor="name" className="form-label">{lang.sales.fields.name}*</label>
+                            <input type="text" className={`form-control ${valids.name}`} name="name" id="name" onChange={updateValues} value={values.name} />
+                            <div className="invalid-feedback">
+                                {lang.sales.validation.required}
+                            </div>
                         </div>
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="email" className="form-label">{lang.sales.fields.email}*</label>
-                        <input type="text" className={`form-control ${valids.email}`} name="email" id="email" value={values.email} onChange={updateValues} placeholder="name@example.com" />
-                        <div className="invalid-feedback">
-                            {_.isEmpty(_.trim(values.email, ' ')) ? lang.sales.validation.required : lang.sales.validation.invalid_email}
+                        <div className="mb-3">
+                            <label htmlFor="email" className="form-label">{lang.sales.fields.email}*</label>
+                            <input type="text" className={`form-control ${valids.email}`} name="email" id="email" value={values.email} onChange={updateValues} placeholder="name@example.com" />
+                            <div className="invalid-feedback">
+                                {_.isEmpty(_.trim(values.email, ' ')) ? lang.sales.validation.required : lang.sales.validation.invalid_email}
+                            </div>
                         </div>
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="phone" className="form-label">{lang.sales.fields.phone}*</label>
-                        <input type="text" className={`form-control ${valids.phone}`} name="phone" id="phone" value={values.phone} onChange={updateValues} />
-                        <div className="invalid-feedback">
-                            {_.isEmpty(_.trim(values.phone, ' ')) ? lang.sales.validation.required : lang.sales.validation.invalid_phone}
+                        <div className="mb-3">
+                            <label htmlFor="phone" className="form-label">{lang.sales.fields.phone}*</label>
+                            <input type="text" className={`form-control ${valids.phone}`} name="phone" id="phone" value={values.phone} onChange={updateValues} />
+                            <div className="invalid-feedback">
+                                {_.isEmpty(_.trim(values.phone, ' ')) ? lang.sales.validation.required : lang.sales.validation.invalid_phone}
+                            </div>
                         </div>
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="message" className="form-label">{lang.sales.fields.message}*</label>
-                        <textarea className={`form-control ${valids.message}`} id="message" name='message' rows={3} value={values.message} onChange={updateValues} />
-                        <div className="invalid-feedback">
-                            {lang.sales.validation.required}
+                        <div className="mb-3">
+                            <label htmlFor="message" className="form-label">{lang.sales.fields.message}*</label>
+                            <textarea className={`form-control ${valids.message}`} id="message" name='message' rows={3} value={values.message} onChange={updateValues} />
+                            <div className="invalid-feedback">
+                                {lang.sales.validation.required}
+                            </div>
                         </div>
-                    </div>
-                    <button type="submit" className="btn">Submit</button>
-                </form>
+                        <button type="submit" className="btn">Submit</button>
+                    </form></>}
             </div>
         </div>
     );

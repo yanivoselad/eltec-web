@@ -8,7 +8,7 @@ function LocationNav(props: Props) {
     const { title, noBreadcrumbs } = props
     const history = useHistory();
     return (
-        <div className="location-nav" >
+        <div className={`location-nav ${noBreadcrumbs ? 'no-shadow' : ''}`} >
             {/*!noBreadcrumbs ?
                 <div className="bread container">Home</div>
                 : <div>&nbsp;</div>
@@ -16,7 +16,7 @@ function LocationNav(props: Props) {
             <div className="page-title d-flex container">
                 {title.map((item: Record<string, string>, index: number) => {
                     return (
-                        <div key={index} className="d-flex page-title-item">
+                        <div key={index} className={`d-flex page-title-item`}>
                             {index > 0 && <i className="bi bi-arrow-left"></i>}
                             {item.link ? <Link to={item.link}>{item.title}</Link> : <div className='text'>{item.title}</div>}
 

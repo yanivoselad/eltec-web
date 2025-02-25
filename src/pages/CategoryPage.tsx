@@ -10,6 +10,7 @@ import LocationNav from '../layout/locationNav';
 import lang from '../language/he/index.js'
 import ProductsNav from '../layout/ProductsNav';
 import SeriesCard from '../layout/seriesCard';
+import Sales from '../layout/Sales';
 
 interface RouteParams {
     categoryName: string
@@ -46,7 +47,8 @@ function HomePage() {
         <>{ subcategories && <div className="" >
             <CompaniesNav />
             <ProductsNav />
-            <LocationNav noBreadcrumbs title={[
+            <Sales />
+            <LocationNav title={[
                 {
                     title: lang.nav.home,
                     link: '/',

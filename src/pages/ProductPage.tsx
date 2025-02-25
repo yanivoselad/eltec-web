@@ -10,6 +10,7 @@ import ProductCard from '../layout/productCard';
 import ProductsNav from '../layout/ProductsNav';
 import { useMemo } from 'react';
 import GoBack from '../layout/GoBack';
+import Sales from '../layout/Sales';
 
 interface RouteParams {
     categoryName: string
@@ -44,7 +45,8 @@ function HomePage() {
     return (
             <><CompaniesNav />
             <ProductsNav />
-            <LocationNav noBreadcrumbs title={[
+            <Sales />
+            <LocationNav title={[
                 {
                     title: lang.nav.home,
                     link: '/',

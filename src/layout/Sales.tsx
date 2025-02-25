@@ -5,9 +5,12 @@ function Sales() {
     const { pathname } = useLocation();
     const history = useHistory();
     return (
-        <>{pathname !== '/sales' &&
-            <div className='sales' onClick={() => history.push('/sales')}>{lang.nav.sales}</div>
-        }</>
+        <div className='sales' onClick={() => history.push('/sales')}>
+            <div className="container rtl d-flex flex-column flex-sm-row gap-sm-2 ">
+                <div>{lang.sales.ads}</div>
+                <b>{lang.nav.sales}</b>
+            </div>
+        </div>        
     )
 }
 

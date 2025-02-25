@@ -49,15 +49,14 @@ footer{
 }
 
 .sales {
-    top: 150px;
-    right: 20vw;
+    top: 194px;
     background-color: #EFBD4B;
-    padding: 5px 10px;
-    border-radius: 10px;
-    position: fixed;
-    z-index: 2000;
-    font-size:.9em;
-    cursor:pointer;
+    padding: 10px 10px;
+    position: absolute;
+    z-index: 100;
+    font-size: .9em;
+    cursor: pointer;
+    width: 100%;
 }
 
 @keyframes rotate360 {
@@ -90,6 +89,7 @@ footer{
     font-weight: 600;
     height: 100vh;
     text-align: center;
+    width:100%;
     vertical-align: middle;
     /* line-height: 100vh; */
     direction: rtl;
@@ -99,20 +99,23 @@ footer{
     justify-content: center;
     flex-direction: column;
     gap: 1em;
+    position:absolute;
+    top:0;
+    right:0;
 }
 
 .loading-icon {
     animation: rotate360 3s linear infinite;
 }
 
-    .loading-icon img {
-        width: 50px;
-        height: 50px;
-    }
+.loading-icon img {
+    width: 50px;
+    height: 50px;
+}
 
 .section-title {
     color: var(--main-color);
-    padding: 2rem 0;
+    padding-bottom: 2rem;
     text-align: right;
     font-size: 1.5em;
     font-weight: 600;
@@ -246,7 +249,7 @@ nav.companies ul li {
     }
 
 .location-nav {
-    height: 5rem;
+    height: 3rem;
     padding: 1rem 0 1rem 0;
     padding-right: 0;
     color: var(--main-color);
@@ -299,10 +302,14 @@ nav.products .nav-link {
     border-radius: 10px !important;
 }
 
-    .card.product {
-        width: 50%;
-        margin: auto
-    }
+.card.success-message{
+    width:500px;
+}
+
+.card.product {
+    width: 50%;
+    margin: auto
+}
 
 @media (min-width: 576px) {
     .card,
@@ -614,9 +621,9 @@ nav.products .nav-link {
 .sales-form{
     width:50%;
 }
-    .sales-form label {
-        font-size:.9em;
-    }
+.sales-form label {
+    font-size:.9em;
+}
 
 .sales-form .btn {
     background-color: var(--main-color);
@@ -632,12 +639,13 @@ nav.products .nav-link {
     }
 
     .sales {
-        top:120px; 
-        right: 20px;
+        top:68px;
+        text-align:center;
+        position:sticky;
     }
 
     .section-title {
-        padding: 3rem 0 1rem 0;
+        padding: 0 0 1rem 0;
         text-align: center;
         font-size: 1.3em;
         font-weight: 600;
@@ -688,6 +696,10 @@ nav.products .nav-link {
             max-height: 100vh;
         }
 
+    .card.success-message {
+        width: 100%;
+    }
+
     .card.category .card-title {
         font-size: 1em;
         text-align: center;
@@ -715,8 +727,11 @@ nav.products .nav-link {
         top: 69px;
         z-index: 1000;
         background: #fff;
-        opacity: .9;
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15), inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+    }
+
+    .location-nav.no-shadow {
+        box-shadow: none;
     }
 
     .tabs-categories {
