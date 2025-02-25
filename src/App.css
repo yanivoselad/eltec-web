@@ -15,6 +15,11 @@ html, body {
     font-optical-sizing: auto;
 }
 
+.grecaptcha-badge {
+    visibility: hidden;
+}
+
+
 .color-main {
     color: var(--main-color) !important;
 }
