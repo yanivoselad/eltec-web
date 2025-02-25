@@ -4,6 +4,9 @@
     --sub-color: #056a7cc9;
     --main-color: #056a7c;
     --sec-color: #666;
+    --bs-btn-hover-bg: #056a7c;
+    --bs-btn-bg: #056a7c;
+    --bs-btn-hover-border-color: #056a7cc9;
 }
 
 html, body {
@@ -28,10 +31,28 @@ html, body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    gap:5em;
 }
 
 .App {
     flex-grow: 1;
+}
+
+footer{
+    height:8em;
+    padding:2em 0;
+}
+
+.sales {
+    top: 150px;
+    right: 20vw;
+    background-color: #EFBD4B;
+    padding: 5px 10px;
+    border-radius: 10px;
+    position: fixed;
+    z-index: 2000;
+    font-size:.9em;
+    cursor:pointer;
 }
 
 @keyframes rotate360 {
@@ -585,9 +606,29 @@ nav.products .nav-link {
     padding: 0 .5em;
 }
 
+.sales-form{
+    width:50%;
+}
+    .sales-form label {
+        font-size:.9em;
+    }
+
+.sales-form .btn {
+    background-color: var(--main-color);
+    color:#fff;
+}
+
 @media (max-width: 576px) {
     .page {        
         margin-top: 2rem;
+    }
+    .sales-form {
+        width: 90%;
+    }
+
+    .sales {
+        top:120px; 
+        right: 20px;
     }
 
     .section-title {

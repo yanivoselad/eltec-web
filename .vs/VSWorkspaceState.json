@@ -4,6 +4,7 @@
     "\\public",
     "\\public\\images",
     "\\src",
+    "\\src\\api",
     "\\src\\language",
     "\\src\\language\\he",
     "\\src\\layout",
@@ -11,6 +12,6 @@
     "\\src\\products",
     "\\src\\products\\components"
   ],
-  "SelectedNode": "\\src\\products\\components\\ProductsProvider.tsx",
+  "SelectedNode": "\\src\\language\\he\\index.js",
   "PreviewInSolutionExplorer": false
 }

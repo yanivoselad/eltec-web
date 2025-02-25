@@ -69,6 +69,12 @@ export type promiseProduct = {
     categories: Record<string, any>[]
 }
 
+export const promiseProductInitial: promiseProduct = {
+    products: [],
+    companies: [],
+    categories: [],
+}
+
 export type productsFilter = {
     company: string | null
     category: string | null

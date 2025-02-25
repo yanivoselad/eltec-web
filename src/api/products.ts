@@ -1,22 +1,50 @@
-import { Product, promiseProduct } from "types"
+import { initial } from "lodash";
+import { Product, promiseProduct, promiseProductInitial } from "types"
+import { lambadaURL, recaptchaKEY } from "../consts";
 
-export const getProducts = async (): Promise<promiseProduct> => {
-    try {
-        //dispatch(loadProductsInProgress());
-        //yaniv
-        const response = await fetch('https://77g5o5zvcx22ry5277rfs2xqhm0ecwbe.lambda-url.eu-north-1.on.aws/');
-
-        const data = await response.json();
-        return data;
-        //dispatch(loadProductsSuccess(products));
-        //dispatch(setLoadedData(true));
-    } catch (e) {
-        /* cant load from server*/
-        console.log('error',e)
-        return {
-            products: [],
-            companies: [],
-            categories: [],
+declare global {
+    interface Window {
+        grecaptcha?: {
+            ready: (callback: () => void) => void;
+            execute: (siteKey: string, options: { action: string }) => Promise<string>;
         };
     }
 }
+
+export const getProducts = async (): Promise<promiseProduct> => {
+    const initial: promiseProduct = promiseProductInitial;
+
+    try {
+        if (!window.grecaptcha) {
+            return initial;
+        }
+
+        const token: string = await new Promise((resolve, reject) => {
+            if (window.grecaptcha) {
+                window.grecaptcha.ready(() => {
+                    if (!window.grecaptcha) {
+                        return reject('reCAPTCHA is not available');
+                    }
+
+                    window.grecaptcha
+                        .execute(recaptchaKEY, { action: 'products' })
+                        .then(resolve)
+                        .catch(reject);
+                });
+            }
+        });
+
+        const response = await fetch(lambadaURL,{
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token
+            }});
+        const data: promiseProduct = await response.json();
+
+        return data;
+    } catch (error) {
+        console.error('Error in getProducts:', error);
+        return initial;
+    }
+};
