@@ -26,7 +26,8 @@ html, body {
     min-height: 100dvh; /* Ensures full usable height */
     display: flex;
     flex-direction: column;
-    gap:20px;
+    gap: 20px;
+    background: linear-gradient(to bottom, #e0e7ed, #fff 50%);
 }
 /* Content should grow to push footer down */
 .content {
@@ -129,7 +130,7 @@ footer {
 .section-title {
     color: var(--main-color);
     padding-bottom: 2rem;
-    text-align: right;
+    text-align: center;
     font-size: 1.5em;
     font-weight: 600;
 }
@@ -508,10 +509,16 @@ nav.products .nav-link {
 
 @media (min-width: 576px) {
     .card.category {
-        width: 200px;
+        width: 12vw;
+        min-height: 12vw;
     }
+}
 
-
+@media (min-width: 1400px) {
+    .card.category {
+        width: 9vw;
+        min-height: 9vw;
+    }
 }
 
 .card.category .card-title {
@@ -643,6 +650,10 @@ nav.products .nav-link {
     color:#fff;
 }
 
+.logos img{
+    width:80px;
+}
+
 @media (max-width: 576px) {
     .page {        
         margin-top: 2rem;
@@ -719,7 +730,7 @@ nav.products .nav-link {
     }
 
     .card.category .card-title {
-        font-size: 1em;
+        font-size: .8em;
         text-align: center;
         margin: 0;
         padding: 0em 0;
@@ -822,5 +833,9 @@ nav.products .nav-link {
 
     .accordion-button:focus {
         box-shadow: none
+    }
+
+    .logos img{
+        width:50px;
     }
 }

@@ -6,9 +6,10 @@ import lang from '../language/he/index.js'
 import ProductsNav from '../layout/ProductsNav';
 import Sales from '../layout/Sales';
 import LocationNav from '../layout/locationNav';
+import CompaniesCards from '../layout/companiesCards';
 
 function HomePage() {
-    const { categories } = useProducts()
+    const { categories, companies } = useProducts()
     return (
         <div>
             <CompaniesNav />
@@ -20,7 +21,11 @@ function HomePage() {
                         {lang.category.nav.our_products}
                     </div>
                 </div>
-                <CategoryCards categories={categories}/>
+                <CategoryCards categories={categories} />
+                <div className="section-title pt-3">
+                    {lang.nav.companies}
+                </div>
+                <CompaniesCards companies={companies} />
             </div>
         </div>
     );

@@ -14,7 +14,7 @@ function CategoryCard(props: { item: any }) {
     const linkToCategory = companyName ? `/company/${companyName}/${item.name}` : '/category/' + item.name
 
     return (
-        <div className="col-4 col-lg-3 col-md-4 col-xl-2" >
+        <div className="col-4  col-md-2 col-lg-2 col-xl-2" >
             <div className="card category" onClick={() => history.push(linkToCategory)}>
                 <div className="g-0 d-flex flex-column flex-sm-row justify-content-between">
                     {/*<div className="col-md-4 card-image-bg category  d-flex flex-row flex-sm-column">
