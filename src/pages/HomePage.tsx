@@ -14,7 +14,6 @@ function HomePage() {
             <CompaniesNav />
             <ProductsNav />
             <Sales />
-            <LocationNav noBreadcrumbs title={[]} />
             <div className="page">
                 <div className="container">
                     <div className="section-title">

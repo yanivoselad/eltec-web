@@ -17,9 +17,9 @@ function SeriesCard(props: { name:string,list: any[] }) {
     return (
         <div className="card series">
             <div className="g-0 d-flex flex-column justify-content-between">
-                {<h6 className={`card-title details linkable ${name === '_' ? 'no-link' : ''} ${open ? 'show' : ''}`} onClick={() => setOpen(!open)}>
-                    <span className="color-main">{name === '_' ? lang.subcategory.titles.no_series : name + ' ' + lang.subcategory.titles.series} </span>
-                </h6>}
+                <h6 className={`card-title details linkable ${name === '_' ? 'no-link' : ''} ${open ? 'show' : ''}`} onClick={() => setOpen(!open)}>
+                    {name === '_' ? <span className="color-main">{lang.subcategory.titles.no_series}</span> : <span className="color-main">{name}&nbsp;<small>{lang.subcategory.titles.series}</small></span>}
+                </h6>
                 <div className={`collapse-drop-wrap ${open || name === '_' ? 'show' : ''}`}>
                     <div className={`series-list collapse-drop`}>
                         {list.map((item, index) => {

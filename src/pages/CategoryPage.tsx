@@ -74,10 +74,8 @@ function HomePage() {
                                 <button
                                     onClick={() => {
                                         setTab(tab === index ? -1 : index)
-                                        window.scrollTo(0, 0);
-                                    }
-                                    }
-                                    className={`accordion-button ${tab === index || subcategories.length === 1 ? '' : 'collapsed'}`}
+                                    }}
+                                    className={`accordion-button ${subcategories.length === 1 ? 'no-arrow' : ''} ${tab === index || subcategories.length === 1 ? '' : 'collapsed'}`}
                                     type="button"
                                     data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne"

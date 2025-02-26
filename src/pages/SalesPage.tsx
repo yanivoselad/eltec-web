@@ -60,7 +60,6 @@ function SalesPage() {
             <CompaniesNav />
             <ProductsNav />
             <Sales />
-            <LocationNav noBreadcrumbs title={[]}/>
             <div className="page">
                 {sending || sent ? (sent ?
                     <SuccessMessage
@@ -120,34 +119,66 @@ function SalesPage() {
 
                     }}>
                         <div className="mb-3">
-                            <label htmlFor="name" className="form-label">{lang.sales.fields.name}*</label>
-                            <input type="text" className={`form-control ${valids.name}`} name="name" id="name" onChange={updateValues} value={values.name} />
+                                {/*<label htmlFor="name" className="form-label">{lang.sales.fields.name}*</label>*/}
+                                <input
+                                    type="text"
+                                    className={`form-control ${valids.name}`}
+                                    name="name"
+                                    id="name"
+                                    onChange={updateValues}
+                                    value={values.name}
+                                    placeholder={lang.sales.fields.name + '*'}
+                                />
                             <div className="invalid-feedback">
                                 {lang.sales.validation.required}
                             </div>
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="email" className="form-label">{lang.sales.fields.email}*</label>
-                            <input type="text" className={`form-control ${valids.email}`} name="email" id="email" value={values.email} onChange={updateValues} placeholder="name@example.com" />
+                                {/*<label htmlFor="email" className="form-label">{lang.sales.fields.email}*</label>*/}
+                            <input
+                                type="text"
+                                className={`form-control ${valids.email}`}
+                                name="email"
+                                id="email"
+                                value={values.email}
+                                onChange={updateValues}
+                                placeholder={lang.sales.fields.email + '*'}
+                            />
                             <div className="invalid-feedback">
                                 {_.isEmpty(_.trim(values.email, ' ')) ? lang.sales.validation.required : lang.sales.validation.invalid_email}
                             </div>
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="phone" className="form-label">{lang.sales.fields.phone}*</label>
-                            <input type="text" className={`form-control ${valids.phone}`} name="phone" id="phone" value={values.phone} onChange={updateValues} />
+                            {/*<label htmlFor="phone" className="form-label">{lang.sales.fields.phone}*</label>*/}
+                            <input
+                                type="text"
+                                className={`form-control ${valids.phone}`}
+                                name="phone"
+                                id="phone"
+                                value={values.phone}
+                                onChange={updateValues}
+                                placeholder={lang.sales.fields.phone + '*'}
+                            />
                             <div className="invalid-feedback">
                                 {_.isEmpty(_.trim(values.phone, ' ')) ? lang.sales.validation.required : lang.sales.validation.invalid_phone}
                             </div>
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="message" className="form-label">{lang.sales.fields.message}*</label>
-                            <textarea className={`form-control ${valids.message}`} id="message" name='message' rows={3} value={values.message} onChange={updateValues} />
+                                {/*<label htmlFor="message" className="form-label">{lang.sales.fields.message}*</label>*/}
+                                <textarea
+                                    className={`form-control ${valids.message}`}
+                                    id="message"
+                                    name='message'
+                                    rows={3}
+                                    value={values.message}
+                                    onChange={updateValues}
+                                    placeholder={lang.sales.fields.message + '*'}
+                                />
                             <div className="invalid-feedback">
                                 {lang.sales.validation.required}
                             </div>
-                        </div>
-                        <button type="submit" className="btn">Submit</button>
+                            </div>
+                            <button type="submit" className="btn">{lang.sales.fields.submit}</button>
                     </form></>}
             </div>
         </div>

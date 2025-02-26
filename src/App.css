@@ -11,8 +11,35 @@
 
 html, body {
     margin: 0;
+    padding: 0;
     font-family: "Open Sans", serif;
-    font-optical-sizing: auto;
+    height: 100%;
+    position: relative;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+}
+
+.App {
+    min-height: 100dvh; /* Ensures full usable height */
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+/* Content should grow to push footer down */
+.content {
+    flex: 1; /* Fills the available space */
+}
+
+footer {
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    height: 50px; /* Fixed height */
 }
 
 .grecaptcha-badge {
@@ -32,21 +59,7 @@ html, body {
     color: var(--sec-color) !important;
 }
 
-#root {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    gap:5em;
-}
 
-.App {
-    flex-grow: 1;
-}
-
-footer{
-    height:8em;
-    padding:2em 0;
-}
 
 .sales {
     top: 194px;
@@ -81,7 +94,7 @@ footer{
 
 .page {
     animation: fadeIn .5s ease-in-out forwards; /* Apply keyframes */
-    margin-top:2rem;
+    margin-top:4rem;
 }
 
 .loading {
@@ -634,8 +647,13 @@ nav.products .nav-link {
     .page {        
         margin-top: 2rem;
     }
+
     .sales-form {
         width: 90%;
+    }
+
+    .sales-form .btn {
+        width:100%;
     }
 
     .sales {
@@ -793,6 +811,11 @@ nav.products .nav-link {
         margin-left: 0;
     }
 
+    .accordion-button.no-arrow::after {
+        display:none;
+    }
+
+    
     .accordion-button:not(.collapsed) {
         background-color: #e9ecef;
     }

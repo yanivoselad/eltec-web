@@ -6,9 +6,10 @@ function Sales() {
     const history = useHistory();
     return (
         <div className='sales' onClick={() => history.push('/sales')}>
-            <div className="container rtl d-flex flex-column flex-sm-row gap-sm-2 ">
-                <div>{lang.sales.ads}</div>
-                <b>{lang.nav.sales}</b>
+            <div className="sales-form rtl m-auto d-flex flex-column flex-sm-row gap-sm-2 ">
+
+                <div>{pathname !== "/sales" ? lang.sales.ads : lang.sales.ads_description}</div>
+                {pathname !== "/sales" && <b>{lang.nav.sales}</b>}
             </div>
         </div>        
     )
