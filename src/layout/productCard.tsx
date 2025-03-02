@@ -20,7 +20,7 @@ function ProductCard(props: { item: Product, nav: Record<string, number | undefi
                 <table className="rtl">
                     <FieldValue name={lang.product.desciption || _.get(lang.subcategory, item.subcategory || '')} value={item.description} />
                     <FieldValue name={lang.product.id} value={item.subcode || item.code} />
-                    <FieldValue name={lang.product.company} value={item.company} />
+                    <FieldValue type='img' name={lang.product.company} value={item.company} />
                     <FieldValue name={lang.product.series} value={item.izo} />                    
                     <FieldValue name={lang.product.grade} value={item.grade} />
                     <FieldValue name={lang.product.amount} value={item.amount} />
@@ -41,10 +41,10 @@ function ProductCard(props: { item: Product, nav: Record<string, number | undefi
     );
 }
 
-const FieldValue = (props: { name: string, value: any }) => {
+const FieldValue = (props: { name: string, value: any, type?:any }) => {
     return <tr>
         <td className="field-name col-3 d-inline-block">{props.name}:</td>
-        <td className="field-value col-9 d-inline-block">{props.value || '-'}</td>
+        <td className="field-value col-9 d-inline-block">{props.type === "img" ? <img src={'/images/'+props.value+'.png'} width="80"/> : props.value || '-'}</td>
     </tr>
 }
 

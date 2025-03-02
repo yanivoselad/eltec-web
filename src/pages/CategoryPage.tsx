@@ -21,26 +21,30 @@ interface RouteParams {
 function HomePage() {
     const { categoryName, companyName, subName } = useParams<RouteParams>();
     const { categories, products } = useProducts()
+
     const prds = useMemo(() => _.filter(
         products,
         (prd: Product) =>
             (!companyName || prd.company === companyName) &&
             (prd.category === categoryName)
     ), [products, categoryName]) || []
+
     const prdSub = _.groupBy(prds, 'subcategory')
+
 
     const subcategories = useMemo(() => {
         return _.reverse(_.keys(_.groupBy(prds, 'subcategory'))) || []
     }, [prds])
 
-    const [tab, setTab] = useState(-1)
+
+    const [tab, setTab] = useState<string | undefined>()
 
     const getIzo = () => {
-        return _.groupBy(prdSub[tab === -1 ? subcategories[0] : subcategories[tab]] || [], 'izo')
+        return _.groupBy(prdSub[tab === undefined ? subcategories[0] : tab] || [], 'izo')
     }
 
     useEffect(() => {
-        setTab(_.indexOf(subcategories, subName))
+        setTab(subName)
     }, [subName, subcategories])
     
     return (
@@ -67,24 +71,25 @@ function HomePage() {
                     {_.get(lang.category.titles, categoryName, categoryName)}
                 </div>
                 <div className="accordion d-sm-none" id="accordionExample">
-                    {subcategories.map((sub: string, index: number) => {
+                    {_.reverse(_.orderBy(subcategories)).map((sub: string, index: number) => {
                         const izo = _.groupBy(prdSub[sub] || [], 'izo')
-                        return (<div className="accordion-item">
+                        const total = _.reduce(prdSub[sub], (sum, prod) => sum + Number(prod.amount), 0)
+                        return (<div className="accordion-item" key={index}>
                             <h2 className="accordion-header rtl">
                                 <button
                                     onClick={() => {
-                                        setTab(tab === index ? -1 : index)
+                                        setTab(tab === sub ? undefined : sub)
                                     }}
-                                    className={`accordion-button ${subcategories.length === 1 ? 'no-arrow' : ''} ${tab === index || subcategories.length === 1 ? '' : 'collapsed'}`}
+                                    className={`accordion-button ${subcategories.length === 1 ? 'no-arrow' : ''} ${tab === sub || subcategories.length === 1 ? '' : 'collapsed'}`}
                                     type="button"
                                     data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne"
                                     aria-expanded="true"
                                     aria-controls="collapseOne">
-                                    {subcategories.length === 1 && sub === "other" ? lang.subcategory.titles.all : _.get(lang.subcategory.titles, sub, sub)}
+                                    {subcategories.length === 1 && sub === "_" ? lang.subcategory.titles.all : _.get(lang.subcategory.titles, sub, sub)}&nbsp;<span className="extra-small-text">({total} {lang.nav.items})</span>
                                 </button>
                             </h2>
-                            <div id="collapseOne" className={`accordion-collapse collapse-drop-wrap ${tab === index || (subcategories.length === 1) ? 'show' : ''}`} data-bs-parent="#accordionExample">
+                            <div id="collapseOne" className={`accordion-collapse collapse-drop-wrap ${tab === sub || (subcategories.length === 1) ? 'show' : ''}`} data-bs-parent="#accordionExample">
                                 <div className="accordion-body collapse-drop">
                                     {/*_.keys(_.omit(izo, '_')).length > 0 && < div className="caption-title color-sub container text-center">{lang.subcategory.titles.serieses}</div>*/}
                                     {_.sortBy(_.keys(izo)).map((izoName: string, index2: number) =>
@@ -100,15 +105,16 @@ function HomePage() {
                     })}
                 </div>
                 <ul className="nav nav-tabs categories d-none d-sm-flex">
-                    {subcategories.map((sub: string, index: number) =>
-                        <li className="nav-item">
+                    {_.reverse(_.orderBy(subcategories)).map((sub: string, index: number) => {
+                        const total = _.reduce(prdSub[sub], (sum, prod) => sum + Number(prod.amount), 0)
+                        return <li className="nav-item">
                             <a
-                                className={`nav-link ${tab === index || tab === -1 && !index ? 'active' : ''}`}
-                                onClick={() => setTab(index)}>
-                                {_.get(lang.subcategory.titles, sub, sub)}
+                                className={`nav-link ${tab === sub || tab === undefined && !index ? 'active' : ''}`}
+                                onClick={() => setTab(sub)}>
+                                {subcategories.length === 1 && sub === "_" ? lang.subcategory.titles.all : _.get(lang.subcategory.titles, sub, sub)}&nbsp;<span className="extra-small-text">({total} {lang.nav.items})</span>
                             </a>
                         </li>
-                    )}
+                    })}
                 </ul>
                 <div className="tabs-categories d-none d-sm-flex">
                     <div className="w-50 m-auto">

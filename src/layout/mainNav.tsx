@@ -158,7 +158,7 @@ function MainNav() {
                                         <div className={`dropdown-menu p-0 ${subopen === 'sub' + index ? 'show' : ''}`}>
                                             {category.subcategories.map(
                                                 (subcategory: string, index2: number) =>
-                                                    subcategory !== "other" && <Link
+                                                    subcategory !== "_" && <Link
                                                         key={index2 + 100}
                                                         className={`dropdown-item`}
                                                         to={`/category/${category.name}/sub/${subcategory}`}

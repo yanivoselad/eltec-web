@@ -51,7 +51,7 @@ function ProductsNav() {
                                     <div className={`dropdown-menu ${subopen === 'sub' + index ? 'show' : ''}`}>
                                         {category.subcategories.map(
                                             (subcategory: string, index2: number) =>
-                                                subcategory !== "other" && <Link
+                                                subcategory !== "_" && <Link
                                                     key={index2 + 100}
                                                     className={`dropdown-item`}
                                                     to={`/category/${category.name}/sub/${subcategory}`}

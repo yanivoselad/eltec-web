@@ -18,7 +18,8 @@ const lang = {
         "success_sending": "בקשתכם נשלחה בהצלחה!",
         "handle_request": "תודה שפניתם אלינו, נחזור אליכם עם תשובה בהקדם",
         "back_to_main": "בחזרה לעמוד ראשי",
-        "send_another": "לשליחת בקשה נוספת"
+        "send_another": "לשליחת בקשה נוספת",
+        "items" : "פריטים",
     },
     "sales": {
         "title": "השאירו פרטים לקבלת הצעת מחיר",
@@ -66,7 +67,7 @@ const lang = {
             "no_series": "פריטים שונים",
             "series":"סדרה",
             "all" :"הכל",
-            "other": 'אחר',
+            "_": 'אחר',
             "engraving": 'לוחיות לחריטה',
             "high_feed_milling": "כרסומים לקדמה גבוהה",
             "inserts": "לוחיות",
