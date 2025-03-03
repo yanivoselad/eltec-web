@@ -1,7 +1,6 @@
 import { useProducts } from "../products/components";
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState, useRef } from "react";
-import lang from '../language/he/index.js'
 import _ from "lodash";
 
 interface RouteParams {
@@ -10,8 +9,8 @@ interface RouteParams {
 }
 
 function ProductsNav() {
-    const { categories } = useProducts()
-    const { companyName, categoryName } = useParams<RouteParams>();
+    const { categories, lang } = useProducts()
+    const { categoryName } = useParams<RouteParams>();
     const [open, setOpen] = useState(false)
     const [subopen, setSubOpen] = useState<string | undefined>(undefined)
     const inputRef = useRef<HTMLElement>(null); // Reference to the input

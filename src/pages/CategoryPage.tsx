@@ -1,5 +1,4 @@
 
-import ProductsCards from '../layout/productsCards';
 import { useProducts } from "../products/components";
 import { useParams } from 'react-router-dom';
 import _ from 'lodash'
@@ -7,7 +6,6 @@ import { useEffect, useMemo, useState } from 'react';
 import { Product } from '../types';
 import CompaniesNav from '../layout/companiesNav';
 import LocationNav from '../layout/locationNav';
-import lang from '../language/he/index.js'
 import ProductsNav from '../layout/ProductsNav';
 import SeriesCard from '../layout/seriesCard';
 import Sales from '../layout/Sales';
@@ -20,7 +18,7 @@ interface RouteParams {
 
 function HomePage() {
     const { categoryName, companyName, subName } = useParams<RouteParams>();
-    const { categories, products } = useProducts()
+    const { lang, products } = useProducts()
 
     const prds = useMemo(() => _.filter(
         products,
@@ -54,21 +52,21 @@ function HomePage() {
             <Sales />
             <LocationNav title={[
                 {
-                    title: lang.nav.home,
+                    title: _.get(lang,'nav.home'),
                     link: '/',
                 },
                 {
-                    title: companyName ? companyName : lang.category.nav.categories,
+                    title: companyName ? companyName : _.get(lang, 'category.nav.categories'),
                     link: companyName ? '/company/' + companyName : '/',
                 },
                 {
-                    title: _.get(lang.category.titles, categoryName, categoryName),
+                    title: _.get(lang ,'category.titles.'+ categoryName, categoryName),
                 },
             ]} />
             {/*<LocationNav title={[_.get(lang.category.titles, categoryName, categoryName), companyName ? lang.category.nav.company + ' ' + companyName : lang.category.nav.all_companies]} />*/}
             <div className="page container">
                 <div className="section-title category">
-                    {_.get(lang.category.titles, categoryName, categoryName)}
+                    {_.get(lang, 'category.titles.' + categoryName, categoryName)}
                 </div>
                 <div className="accordion d-sm-none" id="accordionExample">
                     {_.reverse(_.orderBy(subcategories)).map((sub: string, index: number) => {
@@ -86,7 +84,7 @@ function HomePage() {
                                     data-bs-target="#collapseOne"
                                     aria-expanded="true"
                                     aria-controls="collapseOne">
-                                    {subcategories.length === 1 && sub === "_" ? lang.subcategory.titles.all : _.get(lang.subcategory.titles, sub, sub)}&nbsp;<span className="extra-small-text">({total} {lang.nav.items})</span>
+                                    {subcategories.length === 1 && sub === "_" ? _.get(lang, 'subcategory.titles.all') : _.get(lang, 'subcategory.titles.' + sub, sub)}&nbsp;<span className="extra-small-text">({total} {_.get(lang,'nav.items')})</span>
                                 </button>
                             </h2>
                             <div id="collapseOne" className={`accordion-collapse collapse-drop-wrap ${tab === sub || (subcategories.length === 1) ? 'show' : ''}`} data-bs-parent="#accordionExample">
@@ -111,7 +109,7 @@ function HomePage() {
                             <a
                                 className={`nav-link ${tab === sub || tab === undefined && !index ? 'active' : ''}`}
                                 onClick={() => setTab(sub)}>
-                                {subcategories.length === 1 && sub === "_" ? lang.subcategory.titles.all : _.get(lang.subcategory.titles, sub, sub)}&nbsp;<span className="extra-small-text">({total} {lang.nav.items})</span>
+                                {subcategories.length === 1 && sub === "_" ? _.get(lang, 'subcategory.titles.all') : _.get(lang, 'subcategory.titles.' + sub, sub)}&nbsp;<span className="extra-small-text">({total} {_.get(lang, 'nav.items')})</span>
                             </a>
                         </li>
                     })}

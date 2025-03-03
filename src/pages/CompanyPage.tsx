@@ -5,7 +5,7 @@ import { useProducts } from '../products/components';
 import _ from 'lodash';
 import { useParams } from 'react-router-dom';
 import LocationNav from '../layout/locationNav';
-import lang from '../language/he/index.js'
+
 import ProductsNav from '../layout/ProductsNav';
 import Sales from '../layout/Sales';
 
@@ -14,7 +14,7 @@ interface RouteParams {
 }
 
 function HomePage() {
-    const { categories } = useProducts() || []
+    const { categories, lang } = useProducts() || []
     const { companyName } = useParams<RouteParams>();
     const cats = _.filter(categories, (category) => category?.companies?.includes(companyName)) || []
     return (
@@ -24,17 +24,17 @@ function HomePage() {
             <Sales />
             <LocationNav noBreadcrumbs title={[
                 {
-                    title: lang.nav.home,
+                    title: _.get(lang, 'nav.home', ''),
                     link: '/',
                 },
                 {
                     title: companyName,
                 },
                 {
-                    title: lang.category.titles.all,
+                    title: _.get(lang, 'category.titles.all', ''),
                 },
             ]} />
-            {/*<LocationNav title={[lang.category.titles.all,lang.category.nav.company,companyName]} />*/}
+            {/*<LocationNav title={[_.get(lang,'category.titles.all,_.get(lang,'category.nav.company,companyName]} />*/}
             <div className="page">            
                 <CategoryCards categories={cats}/>
             </div>

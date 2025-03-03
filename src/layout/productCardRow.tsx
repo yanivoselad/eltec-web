@@ -1,18 +1,19 @@
 import _ from "lodash";
 import { useHistory, useLocation } from "react-router-dom";
-import lang from "../language/he";
+import { useProducts } from "../products/components";
 
 function ProductCardRow(props: { item: any, searchMode?: boolean, type?:string }) {
     const { item, searchMode = false, type = '' } = props
     const history = useHistory()
-    const location = useLocation()
     let descriptions = item.description || ''
-    descriptions = descriptions.replaceAll(',',' | ')
+    descriptions = descriptions.replaceAll(',', ' | ')
+    const { lang } = useProducts()
+
     return (
         <div className="col-lg-12 col-md-12 col-sm-12 mb-3" style={{ cursor: 'pointer' }}>
             {searchMode && <div className="card-text search-card-title">
-                {_.get(lang.category.titles, item.category)} | 
-                {_.get(lang.subcategory.titles, item.subcategory)}
+                {_.get(lang, 'category.titles, item.category', '')} |
+                {_.get(lang, 'subcategory.titles, item.subcategory', '')}
             </div>}
             <div className={`card product-row ${type}`}>
 

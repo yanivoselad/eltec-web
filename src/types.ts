@@ -67,12 +67,14 @@ export type promiseProduct = {
     products: Product[]
     companies: string[]
     categories: Record<string, any>[]
+    lang: Record<string, any>
 }
 
 export const promiseProductInitial: promiseProduct = {
     products: [],
     companies: [],
     categories: [],
+    lang: {},
 }
 
 export type productsFilter = {

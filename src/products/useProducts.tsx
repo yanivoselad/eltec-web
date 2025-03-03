@@ -12,6 +12,7 @@ interface ProductsState {
     categories: Record<string,any>[]
     initialized: boolean
     filter: productsFilter
+    lang: Record<string, any>
 }
 
 export function useProductCollection(): [ProductsState, React.Dispatch<ProductsAction>] {
@@ -25,6 +26,7 @@ export function useProductCollection(): [ProductsState, React.Dispatch<ProductsA
                     products: action.payload.products,
                     companies: action.payload.companies,
                     categories: action.payload.categories,
+                    lang: action.payload.lang,
                     initialized: true
                 };
 
@@ -62,12 +64,13 @@ export function useProductCollection(): [ProductsState, React.Dispatch<ProductsA
     const [state, dispatch] = useReducer(productReducer, {
         products: [],
         companies: [],
-        categories:[],
+        categories: [],
         initialized: false,
         filter: {
             company: null,
             category: null,
         },
+        lang: {},
     });
 
     useEffect(() => {

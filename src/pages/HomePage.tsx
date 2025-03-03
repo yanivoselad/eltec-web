@@ -2,14 +2,14 @@
 import CompaniesNav from '../layout/companiesNav';
 import CategoryCards from '../layout/categoryCards';
 import { useProducts } from '../products/components';
-import lang from '../language/he/index.js'
+
 import ProductsNav from '../layout/ProductsNav';
 import Sales from '../layout/Sales';
-import LocationNav from '../layout/locationNav';
 import CompaniesCards from '../layout/companiesCards';
+import _ from 'lodash';
 
 function HomePage() {
-    const { categories, companies } = useProducts()
+    const { categories, companies, lang } = useProducts()
     return (
         <div>
             <CompaniesNav />
@@ -18,12 +18,12 @@ function HomePage() {
             <div className="page">
                 <div className="container">
                     <div className="section-title">
-                        {lang.category.nav.our_products}
+                        {_.get(lang, 'category.nav.our_products','')}
                     </div>
                 </div>
                 <CategoryCards categories={categories} />
                 <div className="section-title pt-3">
-                    {lang.nav.companies}
+                    {_.get(lang, 'nav.companies','')}
                 </div>
                 <CompaniesCards companies={companies} />
             </div>

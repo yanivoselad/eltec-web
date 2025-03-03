@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 import _ from 'lodash'
 import CompaniesNav from '../layout/companiesNav';
 import LocationNav from '../layout/locationNav';
-import lang from '../language/he/index.js'
 import ProductsNav from '../layout/ProductsNav';
 
 interface RouteParams {
@@ -13,7 +12,7 @@ interface RouteParams {
 }
 
 function ResultsPage() {
-    const { products } = useProducts()
+    const { products, lang } = useProducts()
     const { term } = useParams<RouteParams>();
 
     const prds = _.filter(products, (product) => {
@@ -28,17 +27,17 @@ function ResultsPage() {
             <ProductsNav />
             <LocationNav noBreadcrumbs title={[
                 {
-                    title: lang.nav.home,
+                    title: _.get(lang, 'nav.home',''),
                     link: '/',
                 },
                 {
-                    title: lang.nav.results,
+                    title: _.get(lang, 'nav.results',''),
                 },
             ]} />
             
             <div className="page container">
                 <div className="d-flex rtl">
-                    <div style={{ textAlign: 'right' }}>{lang.nav.found} {prds.length} {lang.nav.totalresutls} </div>
+                    <div style={{ textAlign: 'right' }}>{_.get(lang, 'nav.found')} {prds.length} {_.get(lang, 'nav.totalresutls')} </div>
                     <div>&nbsp;"{term}" </div>
                 </div>
                 <ProductsCards products={prds} />

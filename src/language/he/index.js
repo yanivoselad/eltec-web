@@ -1,15 +1,15 @@
 const lang = {
     "nav": {
-        "company": 'א.א. טכנולוגיות בע"מ',
+        /*"company": 'א.א. טכנולוגיות בע"מ',
         "home": "ראשי",
         "results": "תוצאות חיפוש",
         "found": "נמצאו",
         "totalresutls": "תוצאות",
         "find": "חיפוש מוצרים",
         "main_menu": "ראשי",
-        "companies": "חברות",
+        "companies": "חברות",*/
         "loading": "טוען נתונים",
-        "back": "לעמוד קודם",
+        /*"back": "לעמוד קודם",
         "nextizo": "לפריט הבא",
         "backizo": "לפריט הקודם",
         "all_rights": 'כל הזכויות שמורות ל-א.א. טכנולוגיות בע"מ',
@@ -19,8 +19,8 @@ const lang = {
         "handle_request": "תודה שפניתם אלינו, נחזור אליכם עם תשובה בהקדם",
         "back_to_main": "בחזרה לעמוד ראשי",
         "send_another": "לשליחת בקשה נוספת",
-        "items" : "פריטים",
-    },
+        "items" : "פריטים",*/
+    }/*,
     "sales": {
         "title": "השאירו פרטים לקבלת הצעת מחיר",
         'fields': {
@@ -100,7 +100,7 @@ const lang = {
         "desciption": "תיאור",
         "amount": "כמות במלאי",
         "grade": "דרגה",
-    }
+    }*/
 }
 
 export default lang

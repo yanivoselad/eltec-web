@@ -1,10 +1,8 @@
 import _ from "lodash";
 import { useEffect, useRef, useState } from "react";
-import { Link, useHistory, useParams } from "react-router-dom";
-import lang from "../language/he";
+import { Link, useParams } from "react-router-dom";
 import { useProducts } from "../products/components";
 import { Product } from "../types";
-import CompaniesNav from "./companiesNav";
 import ProductCardRow from "./productCardRow";
 
 interface RouteParams {
@@ -13,7 +11,7 @@ interface RouteParams {
 }
 
 function MainNav() {
-    const { products, companies, categories } = useProducts()
+    const { products, companies, categories, lang } = useProducts()
     const { companyName, categoryName } = useParams<RouteParams>();
     const [searchTerm, setSearchTerm] = useState("");
     const [results, setResults] = useState<Product[]>([])
@@ -23,7 +21,6 @@ function MainNav() {
     const [openSearch, setOpenSearch] = useState(false)
     const [openMenu, setOpenMenu] = useState(false)
     const [subopen, setSubOpen] = useState<string | undefined>(undefined)
-    const history = useHistory()
 
     const onOutsideClick = () => {
         setOpenSearch(false)
@@ -72,7 +69,7 @@ function MainNav() {
                                 <i className="bi bi-list fs-2  d-sm-none" onClick={() => setOpenMenu(!openMenu)}></i>
                             </li>
                             <li className="nav-item">
-                                <div><Link className="nav-link" aria-current="page" to="/">{lang.nav.company}</Link></div>
+                                <div><Link className="nav-link" aria-current="page" to="/">{_.get(lang, 'nav.company', '')}</Link></div>
                             </li>
                             <li className="nav-item">
                                 <i className="bi bi-search" onClick={() => setOpenSearch(!openSearch)}></i>
@@ -83,7 +80,7 @@ function MainNav() {
             </nav>
             <div  className={`offcanvas offcanvas-end ${openSearch ? 'show' : ''}`}>
                 <div className="offcanvas-header">
-                    <h5 className="offcanvas-title" id="offcanvasLabel">{lang.nav.find}</h5>
+                    <h5 className="offcanvas-title" id="offcanvasLabel">{_.get(lang, 'nav.find', '')}</h5>
                     <button type="button" className="btn btn-close" onClick={() => setOpenSearch(!openSearch)}></button>
                 </div>
                 <div className="container-fluid search-wrap">
@@ -102,7 +99,7 @@ function MainNav() {
                         style={{ position: "relative" }} id="myForm" role="search">
                         <div className='w-100'>
                             <input autoComplete="off" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} id="search" className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            {!_.isEmpty(searchTerm) && < div className='text-end'><small>{lang.nav.found} <b>{totalResults}</b> {lang.nav.totalresutls}</small></div>}
+                            {!_.isEmpty(searchTerm) && < div className='text-end'><small>{_.get(lang, 'nav.found', '')} <b>{totalResults}</b> {_.get(lang,'nav.totalresutls','')}</small></div>}
                         </div>
                         <div className='divider'></div>
 
@@ -119,12 +116,12 @@ function MainNav() {
             </div>
             <div className={`offcanvas offcanvas-start ${openMenu ? 'show' : ''}`}>
                 <div className="offcanvas-header">
-                    <h5 className="offcanvas-title" id="offcanvasLabel">{lang.nav.main_menu}</h5>
+                    <h5 className="offcanvas-title" id="offcanvasLabel">{_.get(lang, 'nav.main_menu', '')}</h5>
                     <button type="button" className="btn-close" onClick={() => setOpenMenu(!openMenu)}></button>
                 </div>
                 <div className='p-3 row'>
                     <div className="col-6" >
-                        <div className='nav-header-link'>{lang.nav.companies}</div>
+                        <div className='nav-header-link'>{_.get(lang, 'nav.companies', '')}</div>
                         <ul id="companies-nav" className="navbar-nav p-0 me-auto mb-2 mb-lg-0 rtl">
                             {companies && companies.map(
                                 (company, index) => <li key={index} className="nav-item">
@@ -138,7 +135,7 @@ function MainNav() {
                         </ul>
                     </div>
                     <div className="col-6" >
-                        <div className='nav-header-link'>{lang.category.nav.products}</div>
+                        <div className='nav-header-link'>{_.get(lang, 'category.nav.products', '')}</div>
                         <ul className="navbar-nav p-0 rtl">
                             {categories && categories.map(
                                 (category, index) => <li

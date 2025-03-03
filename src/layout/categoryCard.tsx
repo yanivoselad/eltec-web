@@ -1,7 +1,8 @@
 import _ from 'lodash';
 import { useHistory } from 'react-router-dom';
 import { useParams, Link } from 'react-router-dom';
-import lang from '../language/he/index.js'
+import { useProducts } from '../products/components';
+
 
 interface RouteParams {
     companyName: string
@@ -11,6 +12,7 @@ function CategoryCard(props: { item: any }) {
     const { item } = props
     const history = useHistory();
     const { companyName } = useParams<RouteParams>();
+    const { lang } = useProducts()
     const linkToCategory = companyName ? `/company/${companyName}/${item.name}` : '/category/' + item.name
 
     return (
@@ -26,7 +28,7 @@ function CategoryCard(props: { item: any }) {
                     <div className="col-md-12">
                         <div className="card-body text-center ">
                             <img src={`../images/${item.name}.png`}/>
-                            <h6 className="card-title">{`${_.get(lang.category.titles, item.name)}`}</h6>
+                            <h6 className="card-title">{`${_.get(lang, 'category.titles.'+item.name)}`}</h6>
                             {/*<p className="card-text amount"><small className="text-body-secondary">{companyName ? item.amount.companies[companyName] : item.amount.total} סוגי פריטים </small></p>*/}
                         </div>
                     </div>

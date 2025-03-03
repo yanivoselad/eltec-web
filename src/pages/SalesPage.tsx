@@ -1,7 +1,5 @@
 
 import CompaniesNav from '../layout/companiesNav';
-import { useProducts } from '../products/components';
-import lang from '../language/he/index.js'
 import ProductsNav from '../layout/ProductsNav';
 import { useState } from 'react';
 import _ from 'lodash';
@@ -10,7 +8,7 @@ import Loading from '../layout/loading';
 import SuccessMessage from '../layout/successMessage';
 import { useHistory } from 'react-router-dom';
 import Sales from '../layout/Sales';
-import LocationNav from '../layout/locationNav';
+import { useProducts } from '../products/components';
 
 declare global {
     interface Window {
@@ -27,7 +25,7 @@ function SalesPage() {
     const [sending, setSending] = useState<boolean>(false)
     const [sent, setSent] = useState<boolean>(false)
     const history = useHistory()
-
+    const { lang } = useProducts()
     const [values, setValues] = useState<Record<string, string>>(initialContactValues)
     const [valids, setValids] = useState<Record<string, string>>(initialContactValues)
 
@@ -66,10 +64,10 @@ function SalesPage() {
                         show={true}
                         handleMain={() => history.push('/')}
                         handleAnother={() => setSent(false)}
-                    /> : <Loading style="locale" title={lang.nav.sending} />) :
+                    /> : <Loading style="locale" title={_.get(lang,'nav.sending')} />) :
                     <><div className="container">
                     <div className="section-title rtl text-center">
-                        {lang.sales.title}
+                        {_.get(lang,'sales.title')}
                     </div>
                     </div>
                     <form className='container sales-form rtl' onSubmit={(e) => {
@@ -119,7 +117,7 @@ function SalesPage() {
 
                     }}>
                         <div className="mb-3">
-                                {/*<label htmlFor="name" className="form-label">{lang.sales.fields.name}*</label>*/}
+                                {/*<label htmlFor="name" className="form-label">{_.get(lang,'sales.fields.name}*</label>*/}
                                 <input
                                     type="text"
                                     className={`form-control ${valids.name}`}
@@ -127,14 +125,14 @@ function SalesPage() {
                                     id="name"
                                     onChange={updateValues}
                                     value={values.name}
-                                    placeholder={lang.sales.fields.name + '*'}
+                                    placeholder={_.get(lang,'sales.fields.name') + '*'}
                                 />
                             <div className="invalid-feedback">
-                                {lang.sales.validation.required}
+                                    {_.get(lang, 'sales.validation.required')}
                             </div>
                         </div>
                         <div className="mb-3">
-                                {/*<label htmlFor="email" className="form-label">{lang.sales.fields.email}*</label>*/}
+                                {/*<label htmlFor="email" className="form-label">{_.get(lang,'sales.fields.email}*</label>*/}
                             <input
                                 type="text"
                                 className={`form-control ${valids.email}`}
@@ -142,14 +140,14 @@ function SalesPage() {
                                 id="email"
                                 value={values.email}
                                 onChange={updateValues}
-                                placeholder={lang.sales.fields.email + '*'}
+                                    placeholder={_.get(lang, 'sales.fields.email') + '*'}
                             />
                             <div className="invalid-feedback">
-                                {_.isEmpty(_.trim(values.email, ' ')) ? lang.sales.validation.required : lang.sales.validation.invalid_email}
+                                    {_.isEmpty(_.trim(values.email, ' ')) ? _.get(lang, 'sales.validation.required') : _.get(lang, 'sales.validation.invalid_email')}
                             </div>
                         </div>
                         <div className="mb-3">
-                            {/*<label htmlFor="phone" className="form-label">{lang.sales.fields.phone}*</label>*/}
+                            {/*<label htmlFor="phone" className="form-label">{_.get(lang,'sales.fields.phone}*</label>*/}
                             <input
                                 type="text"
                                 className={`form-control ${valids.phone}`}
@@ -157,14 +155,14 @@ function SalesPage() {
                                 id="phone"
                                 value={values.phone}
                                 onChange={updateValues}
-                                placeholder={lang.sales.fields.phone + '*'}
+                                    placeholder={_.get(lang, 'sales.fields.phone') + '*'}
                             />
                             <div className="invalid-feedback">
-                                {_.isEmpty(_.trim(values.phone, ' ')) ? lang.sales.validation.required : lang.sales.validation.invalid_phone}
+                                    {_.isEmpty(_.trim(values.phone, ' ')) ? _.get(lang, 'sales.validation.required') : _.get(lang,'sales.validation.invalid_phone')}
                             </div>
                         </div>
                         <div className="mb-3">
-                                {/*<label htmlFor="message" className="form-label">{lang.sales.fields.message}*</label>*/}
+                                {/*<label htmlFor="message" className="form-label">{_.get(lang,'sales.fields.message')}*</label>*/}
                                 <textarea
                                     className={`form-control ${valids.message}`}
                                     id="message"
@@ -172,13 +170,13 @@ function SalesPage() {
                                     rows={3}
                                     value={values.message}
                                     onChange={updateValues}
-                                    placeholder={lang.sales.fields.message + '*'}
+                                    placeholder={_.get(lang, 'sales.fields.message') + '*'}
                                 />
                             <div className="invalid-feedback">
-                                {lang.sales.validation.required}
+                                    {_.get(lang, 'sales.validation.required')}
                             </div>
                             </div>
-                            <button type="submit" className="btn">{lang.sales.fields.submit}</button>
+                            <button type="submit" className="btn">{_.get(lang, 'sales.fields.submit')}</button>
                     </form></>}
             </div>
         </div>

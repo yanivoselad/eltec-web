@@ -1,6 +1,7 @@
 import _ from "lodash";
 import { useHistory, useParams } from "react-router-dom";
-import lang from "../language/he";
+
+import { useProducts } from "../products/components";
 import { Product } from "../types";
 
 interface RouteParams {
@@ -13,25 +14,26 @@ function ProductCard(props: { item: Product, nav: Record<string, number | undefi
     const { item, nav } = props
     const history = useHistory();
     const { categoryName } = useParams<RouteParams>();
+    const { lang } = useProducts()
     
     return (
         <div className="">
             <div className="card product p-2">
                 <table className="rtl">
-                    <FieldValue name={lang.product.desciption || _.get(lang.subcategory, item.subcategory || '')} value={item.description} />
-                    <FieldValue name={lang.product.id} value={item.subcode || item.code} />
-                    <FieldValue type='img' name={lang.product.company} value={item.company} />
-                    <FieldValue name={lang.product.series} value={item.izo} />                    
-                    <FieldValue name={lang.product.grade} value={item.grade} />
-                    <FieldValue name={lang.product.amount} value={item.amount} />
+                    <FieldValue name={_.get(lang, 'product.desciption', '') || _.get(lang, 'subcategory, item.subcategory', '')} value={item.description} />
+                    <FieldValue name={_.get(lang, 'product.id', '')} value={item.subcode || item.code} />
+                    <FieldValue type='img' name={_.get(lang, 'product.company', '')} value={item.company} />
+                    <FieldValue name={_.get(lang, 'product.series', '')} value={item.izo} />
+                    <FieldValue name={_.get(lang, 'product.grade', '')} value={item.grade} />
+                    <FieldValue name={_.get(lang, 'product.amount', '')} value={item.amount} />
                 </table>
                 <div className="d-flex flex-row pt-3 justify-content-between" >
                     {nav.next ? <div className="px-0 linkable" onClick={() => history.push('/category/' + categoryName + '/' + nav.next)}>
                         <i className="bi bi-arrow-left ps-1"></i>
-                        <small>{lang.nav.nextizo}</small>
+                        <small>{_.get(lang, 'nav.nextizo', '')}</small>
                     </div> : <div>&nbsp;</div>}
                     {nav.back ? <div className="px-0 linkable" onClick={() => history.push('/category/' + categoryName + '/' + nav.back)}>
-                        <small>{lang.nav.backizo}</small>
+                            <small>{_.get(lang, 'nav.backizo', '')}</small>
                         <i className="bi bi-arrow-right ps-1"></i>
                     </div> : <div>&nbsp;</div>}
                 </div>
