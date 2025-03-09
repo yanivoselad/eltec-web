@@ -322,7 +322,7 @@ nav.products {
 
     .card.product {
         width: 50%;
-        margin: auto
+        margin: auto;
     }
 
 @media (min-width: 576px) {
@@ -668,6 +668,20 @@ nav.products {
 
 .logos img {
     width: 80px;
+}
+
+.crousel-arrows {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: 50%;
+    left: 0;
+}
+
+.crousel-arrows i{
+    font-size:1.3em;
+    color:#999;
+
 }
 
 @media (max-width: 576px) {

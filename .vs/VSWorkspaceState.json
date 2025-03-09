@@ -1,12 +1,12 @@
 {
   "ExpandedNodes": [
-    "\\public\\images",
+    "",
     "\\src",
     "\\src\\language",
     "\\src\\language\\he",
     "\\src\\layout",
-    "\\src\\pages",
-    "\\src\\products\\components"
+    "\\src\\pages"
   ],
+  "SelectedNode": "\\src\\pages\\SalesPage.tsx",
   "PreviewInSolutionExplorer": false
 }

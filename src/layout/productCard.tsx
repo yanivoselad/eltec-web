@@ -20,7 +20,7 @@ function ProductCard(props: { item: Product, nav: Record<string, number | undefi
         <div className="">
             <div className="card product p-2">
                 <table className="rtl">
-                    <FieldValue name={_.get(lang, 'product.desciption', '') || _.get(lang, 'subcategory, item.subcategory', '')} value={item.description} />
+                    <FieldValue name={_.get(lang, 'product.desciption', '') || _.get(lang, 'subcategory, item.subcategory', '')} value={item.description || _.get(lang, 'subcategory.titles.'+item.subcategory)} />
                     <FieldValue name={_.get(lang, 'product.id', '')} value={item.subcode || item.code} />
                     <FieldValue type='img' name={_.get(lang, 'product.company', '')} value={item.company} />
                     <FieldValue name={_.get(lang, 'product.series', '')} value={item.izo} />
@@ -43,10 +43,15 @@ function ProductCard(props: { item: Product, nav: Record<string, number | undefi
     );
 }
 
-const FieldValue = (props: { name: string, value: any, type?:any }) => {
+const FieldValue = (props: { name: string, value: any, type?: any }) => {
+    const val = String(props.value) || '-'
+    const vals = val.split(',')
     return <tr>
-        <td className="field-name col-3 d-inline-block">{props.name}:</td>
-        <td className="field-value col-9 d-inline-block">{props.type === "img" ? <img src={'/images/'+props.value+'.png'} width="80"/> : props.value || '-'}</td>
+        <td className="field-name col-3 d-inline-block py-2" valign="top">{props.name}:</td>
+        <td className="field-value col-9 d-inline-block py-2" valign="top">{
+            props.type === "img" ?
+                <img src={'/images/' + props.value + '.png'} width="80" /> :
+                vals.map((v: string, inx: number) => <span key={inx}>{v}<br/></span>)}</td>
     </tr>
 }
 
