@@ -69,7 +69,7 @@ function MainNav() {
                                 <i className="bi bi-list fs-2  d-sm-none" onClick={() => setOpenMenu(!openMenu)}></i>
                             </li>
                             <li className="nav-item">
-                                <div><Link className="nav-link" aria-current="page" to="/">{_.get(lang, 'nav.company', '')}</Link></div>
+                                <div><Link className="nav-link" aria-current="page" to="/">{_.get(lang, 'nav.company', 'אלטק')}</Link></div>
                             </li>
                             <li className="nav-item">
                                 <i className="bi bi-search" onClick={() => setOpenSearch(!openSearch)}></i>
@@ -80,7 +80,7 @@ function MainNav() {
             </nav>
             <div  className={`offcanvas offcanvas-end ${openSearch ? 'show' : ''}`}>
                 <div className="offcanvas-header">
-                    <h5 className="offcanvas-title" id="offcanvasLabel">{_.get(lang, 'nav.find', '')}</h5>
+                    <h5 className="offcanvas-title" id="offcanvasLabel">{_.get(lang, 'nav.find', 'חיפוש')}</h5>
                     <button type="button" className="btn btn-close" onClick={() => setOpenSearch(!openSearch)}></button>
                 </div>
                 <div className="container-fluid search-wrap">
@@ -99,7 +99,7 @@ function MainNav() {
                         style={{ position: "relative" }} id="myForm" role="search">
                         <div className='w-100'>
                             <input autoComplete="off" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} id="search" className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            {!_.isEmpty(searchTerm) && < div className='text-end'><small>{_.get(lang, 'nav.found', '')} <b>{totalResults}</b> {_.get(lang,'nav.totalresutls','')}</small></div>}
+                            {!_.isEmpty(searchTerm) && < div className='text-end'><small>{_.get(lang, 'nav.found', 'נמצא')} <b>{totalResults}</b> {_.get(lang,'nav.totalresutls','סהכ תוצאות')}</small></div>}
                         </div>
                         <div className='divider'></div>
 
@@ -116,12 +116,12 @@ function MainNav() {
             </div>
             <div className={`offcanvas offcanvas-start ${openMenu ? 'show' : ''}`}>
                 <div className="offcanvas-header">
-                    <h5 className="offcanvas-title" id="offcanvasLabel">{_.get(lang, 'nav.main_menu', '')}</h5>
+                    <h5 className="offcanvas-title" id="offcanvasLabel">{_.get(lang, 'nav.main_menu', 'תפריט')}</h5>
                     <button type="button" className="btn-close" onClick={() => setOpenMenu(!openMenu)}></button>
                 </div>
                 <div className='p-3 row'>
                     <div className="col-6" >
-                        <div className='nav-header-link'>{_.get(lang, 'nav.companies', '')}</div>
+                        <div className='nav-header-link'>{_.get(lang, 'nav.companies', 'חברות')}</div>
                         <ul id="companies-nav" className="navbar-nav p-0 me-auto mb-2 mb-lg-0 rtl">
                             {companies && companies.map(
                                 (company, index) => <li key={index} className="nav-item">
@@ -135,7 +135,7 @@ function MainNav() {
                         </ul>
                     </div>
                     <div className="col-6" >
-                        <div className='nav-header-link'>{_.get(lang, 'category.nav.products', '')}</div>
+                        <div className='nav-header-link'>{_.get(lang, 'category.nav.products', 'מוצרים')}</div>
                         <ul className="navbar-nav p-0 rtl">
                             {categories && categories.map(
                                 (category, index) => <li
@@ -150,7 +150,7 @@ function MainNav() {
                                         to={`${category.subcategories.length > 1 ? '#' : `/category/${category.name}`}`}
                                         id="navbarDropdownMenuLink"
 
-                                    >{_.get(lang, 'category.titles.' + category.name)} </Link>
+                                    >{_.get(lang, 'category.titles.' + category.name,category.name)} </Link>
                                     {category.subcategories.length > 1 &&
                                         <div className={`dropdown-menu p-0 ${subopen === 'sub' + index ? 'show' : ''}`}>
                                             {category.subcategories.map(

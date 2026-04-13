@@ -14,9 +14,15 @@ interface RouteParams {
 }
 
 function HomePage() {
-    const { categories, lang } = useProducts() || []
+    const { categories, products, lang } = useProducts() || []
     const { companyName } = useParams<RouteParams>();
-    const cats = _.filter(categories, (category) => category?.companies?.includes(companyName)) || []
+
+    // Filter categories that have products for this company
+    const cats = _.filter(categories, (category) => {
+        return _.some(products, (product) =>
+            product.company === companyName && product.category === category.name
+        );
+    }) || [];
     return (
         <div>
             <CompaniesNav />

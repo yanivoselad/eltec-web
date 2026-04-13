@@ -17,6 +17,7 @@ export const ProductContext = React.createContext<ProductContextType | undefined
 
 export const ProductProvider: React.FC = ({ children }) => {
     const [{ initialized, products, companies, categories, filter, lang }, productsDispatch] = useProductCollection();
+
     return (
         <ProductContext.Provider value={{ products, companies, categories, productsDispatch, filter, lang }}>
             {initialized ? children :

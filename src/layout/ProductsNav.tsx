@@ -45,7 +45,7 @@ function ProductsNav() {
                                     to={`${category.subcategories.length > 1 ? '#' :`/category/${category.name}`}`}
                                     id="navbarDropdownMenuLink"
 
-                                >{_.get(lang,'category.titles.'+category.name)} </Link>
+                                >{_.get(lang,'category.titles.'+category.name,'category.titles.'+category.name)} </Link>
                                 {category.subcategories.length > 1 &&
                                     <div className={`dropdown-menu ${subopen === 'sub' + index ? 'show' : ''}`}>
                                         {category.subcategories.map(

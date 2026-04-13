@@ -77,8 +77,13 @@ export function useProductCollection(): [ProductsState, React.Dispatch<ProductsA
         // TODO: Call fetch action
         let products = getProducts();
         products.then((data) => {
-            if (typeof data !== undefined)
+            if (data !== undefined && data.products.length > 0) {
                 dispatch({ type: 'load_success', payload: data })
+            } else {
+                console.error('No products loaded or data is undefined')
+            }
+        }).catch((error) => {
+            console.error('Failed to load products:', error)
         })
     }, []);
 
