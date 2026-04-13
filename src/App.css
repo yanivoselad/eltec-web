@@ -686,6 +686,12 @@ nav.products {
 }
 
 @media (max-width: 576px) {
+    .series-description{
+        position: absolute;
+        top: -20px;
+        display: block;
+        font-size: .9em;
+    }
     .page {
         margin-top: 2rem;
     }
