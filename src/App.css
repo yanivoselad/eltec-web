@@ -250,7 +250,9 @@ nav.products .navbar-nav {
 nav.companies .nav-link.active {
     color: #fff
 }
-
+.w-80{
+    width:80%
+}
 nav.companies ul li {
     border-right: 1px solid #000;
     cursor: pointer;
@@ -684,13 +686,17 @@ nav.products {
     color:#999;
 
 }
+.series-name{
+    color:#000!important;
+    font-weight: 500;
+}
 
 @media (max-width: 576px) {
     .series-description{
         position: absolute;
         top: -20px;
         display: block;
-        font-size: .9em;
+        font-size: .85em;
     }
     .page {
         margin-top: 2rem;

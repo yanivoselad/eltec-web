@@ -15,7 +15,7 @@ function SeriesCard(props: { name:string,list: any[] }) {
         <div className="card series">
             <div className="g-0 d-flex flex-column justify-content-between">
                 <h6 className={`card-title details linkable ${name === '_' ? 'no-link' : ''} ${open ? 'show' : ''}`} onClick={() => setOpen(!open)}>
-                    {name === '_' ? <span className="color-main flex-grow-1">{_.get(lang, 'subcategory.titles.no_series', '')}</span> : <span className="color-main">{name}&nbsp;<small><span className='series-description'>{_.get(lang, 'subcategory.titles.series.'+name)}</span></small></span>}
+                    {name === '_' ? <span className="color-main flex-grow-1">{_.get(lang, 'subcategory.titles.no_series', '')}</span> : <span className="color-main"><span className="series-name">{name}</span>&nbsp;<small><span className='series-description'>{_.get(lang, 'subcategory.titles.series.'+name)}</span></small></span>}
                     <div className="g-0 d-flex flex-row align-items-center ">
                         <div className={`series-amount d-flex align-items-center gap-2 color-sec extra-small-text rtl`}>
                             <small>{total} {_.get(lang, 'nav.items', '')} </small>

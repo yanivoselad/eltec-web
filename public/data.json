@@ -10731,8 +10731,8 @@
   "currency": "ILS",
   "uuid": 846,
   "__v": 0,
-  "izo": "_",
-  "formatedtitle": "4C10H-15   (15.00)M.G.P40+AM200 COATING"
+  "izo": "4C10H",
+  "formatedtitle": "15   (15.00)M.G.P40+AM200 COATING"
 },
 {
   "_id": {
@@ -10749,8 +10749,8 @@
   "currency": "ILS",
   "uuid": 847,
   "__v": 0,
-  "izo": "_",
-  "formatedtitle": "4C10H-17   (17.00)M.G.P40+AM200 COATING"
+  "izo": "4C10H",
+  "formatedtitle": "17   (17.00)M.G.P40+AM200 COATING"
 },
 {
   "_id": {
@@ -10767,8 +10767,8 @@
   "currency": "ILS",
   "uuid": 848,
   "__v": 0,
-  "izo": "_",
-  "formatedtitle": "4C11H-0025 (19.84)M.G.P40+AM200 COATING"
+  "izo": "4C11H",
+  "formatedtitle": "0025 (19.84)M.G.P40+AM200 COATING"
 },
 {
   "_id": {
@@ -10785,8 +10785,8 @@
   "currency": "ILS",
   "uuid": 849,
   "__v": 0,
-  "izo": "_",
-  "formatedtitle": "4C21H-18   (18.00)M.G.K20+AM200 COATING"
+  "izo": "4C21H",
+  "formatedtitle": "18   (18.00)M.G.K20+AM200 COATING"
 },
 {
   "_id": {
@@ -10803,8 +10803,8 @@
   "currency": "ILS",
   "uuid": 850,
   "__v": 0,
-  "izo": "_",
-  "formatedtitle": "4C21H-19   (19.00)M.G.K20+AM200 COATING"
+  "izo": "4C21H",
+  "formatedtitle": "19   (19.00)M.G.K20+AM200 COATING"
 },
 {
   "_id": {
@@ -10821,8 +10821,8 @@
   "currency": "ILS",
   "uuid": 851,
   "__v": 0,
-  "izo": "_",
-  "formatedtitle": "4C21H-21   (21.00)M.G.K20+AM200 COATING"
+  "izo": "4C21H",
+  "formatedtitle": "21   (21.00)M.G.K20+AM200 COATING"
 },
 {
   "_id": {
@@ -10839,8 +10839,8 @@
   "currency": "ILS",
   "uuid": 852,
   "__v": 0,
-  "izo": "_",
-  "formatedtitle": "4C21H-23   (23.00)M.G.K20+AM200 COATING"
+  "izo": "4C21H",
+  "formatedtitle": "23   (23.00)M.G.K20+AM200 COATING"
 },
 {
   "_id": {
@@ -17266,8 +17266,8 @@
   "__v": 0,
   "category": "milling",
   "subcategory": "face_milling",
-  "formatedtitle": null,
-  "izo": null
+  "formatedtitle": "RD1204-D032",
+  "izo": "AFMRC"
 },
 {
   "_id": {
@@ -17282,8 +17282,8 @@
   "__v": 0,
   "category": "milling",
   "subcategory": "face_milling",
-  "formatedtitle": null,
-  "izo": null
+  "formatedtitle": "RD1204-D040",
+  "izo": "AFMRC"
 },
 {
   "_id": {
@@ -17298,8 +17298,8 @@
   "__v": 0,
   "category": "milling",
   "subcategory": "face_milling",
-  "formatedtitle": null,
-  "izo": null
+  "formatedtitle": "RD1204-D052",
+  "izo": "AFMRC"
 },
 {
   "_id": {
@@ -17315,7 +17315,7 @@
   "category": "milling",
   "subcategory": "face_milling",
   "formatedtitle": null,
-  "izo": null
+  "izo": "AFMRC"
 },
 {
   "_id": {
@@ -17330,8 +17330,8 @@
   "__v": 0,
   "category": "milling",
   "subcategory": "face_milling",
-  "formatedtitle": null,
-  "izo": null
+  "formatedtitle": "RD12T3-D040",
+  "izo": "AFMRC"
 },
 {
   "_id": {
@@ -17346,8 +17346,8 @@
   "__v": 0,
   "category": "milling",
   "subcategory": "face_milling",
-  "formatedtitle": null,
-  "izo": null
+  "formatedtitle": "RD12T3-D052",
+  "izo": "AFMRC"
 },
 {
   "_id": {

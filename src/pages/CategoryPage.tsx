@@ -115,7 +115,7 @@ function HomePage() {
                     })}
                 </ul>
                 <div className="tabs-categories d-none d-sm-flex">
-                    <div className="w-50 m-auto">
+                    <div className="w-80 m-auto">
                         {
                             _.sortBy(_.keys(getIzo())).map((izoName: string, index2: number) =>
                             <div className="container series-item">
